@@ -1,5 +1,5 @@
 /.config/Code
 /.config/dconf
-/nixos/hardware-configuration
+/nixos/hardware-configuration.nix
 /.config/pulse/cookie
 /github.pat
