@@ -1,0 +1,228 @@
+// github.com/pahasara/dotFiles
+{
+    //#####################
+    //### CONFIGURATION ###
+    //#####################
+    // "reload_style_on_change": true,
+    "margin-top": 5,
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-bottom": 0,
+    "layer": "bottom",
+    "position": "top",
+    "spacing": 0,
+    //##################
+    //### BAR ORDER  ###
+    //##################
+    "modules-left": [
+        "custom/logo",
+        "hyprland/workspaces",
+        "memory"
+        // "custom/spotify"
+    ],
+    "modules-center": [
+        "wlr/taskbar"
+    ],
+    "modules-right": [
+        "backlight",
+        "network",
+        "wireplumber",
+        "battery",
+        "clock"
+    ],
+
+    //################
+    //### MODULES  ###
+    //################
+    "hyprland/workspaces": {
+        "active-only": false,
+        "all-outputs": false,
+        "format": "{icon}",
+        "on-click": "activate",
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            // "5": [],
+            // "6": [],
+            // "7": [],
+            // "8": [],
+            // "9": [],
+            // "10": []
+        },
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            "active": "<small></small>",
+            "default": "",
+        }
+    },
+
+    // Task Bar
+    "wlr/taskbar": {
+        "format": "{icon}",
+            "icon-size": 18,
+            "tooltip-format": "{title}",
+            "on-click": "activate",
+            "on-click-middle": "close",
+            "ignore-list": [
+            "Alacritty",
+            "kitty"
+            ],
+            "rewrite": {
+                "Firefox Web Browser": "Firefox",
+                "Foot Server": "Terminal"
+            }
+    },
+
+    "hyprland/window": {
+        "max-length": 40,
+        "tooltip": false
+    },
+    "clock#cal": {
+        "format": "{:%a, %d %b}",
+         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "tooltip-format": "{:%a, %d %b}",
+    },
+    "battery": {
+        "interval": 5,
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        "format-charging": "",
+        "format-plugged": "",
+        // "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "{icon} {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "tooltip-format": "{time} ({capacity}%)"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        /* "format-wifi": "{essid} ({signalStrength}%) ", */
+        "format-wifi": "{icon}",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{essid}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "<big>⚠</big>",
+        "format-icons": [
+            "󰤭",
+            "",
+            "",
+            "󰤥",
+            "󰤨"
+        ],
+        "on-click": "nmap"
+    },
+    "network#speed": {
+        "interval": 1,
+        "format": "{ifname}",
+        "format-wifi": " {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-ethernet": "󰌘  {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-disconnected": "󰌙",
+        "tooltip-format": "{ipaddr}",
+        "format-linked": "󰈁 {ifname} (No IP)",
+        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+        "tooltip-format-ethernet": "{ifname} 󰌘",
+        "tooltip-format-disconnected": "󰌙 Disconnected",
+        "min-length": 20,
+        "max-length": 24,
+        "format-icons": [
+            "Slow",
+            "Medium",
+            "Fast",
+            "Fastest",
+            "Ethernet"
+        ]
+    },
+    "wireplumber": {
+        "format": "{icon}",
+        "format-full": "{icon} {volume}%",
+        "format-muted": " ",
+        "format-icons": [
+            "",
+            "",
+            "<big>󰕾</big>",
+            " "
+        ],
+        "on-click": "pavucontrol",
+        "tooltip-format": "{volume}%",
+    },
+    "pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        // "format": "{icon}  {volume}%  {format_source}",
+        "format": "{format_source}",
+        // "tooltip-format": "Volume: {volume}%",
+        "format-bluetooth": " {icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "  {icon} {format_source}",
+        "format-muted": "  {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": "hp",
+            "hands-free": "hf ",
+            "headset": "h ",
+            "phone": "l",
+            "portable": "p",
+            "car": "c ",
+            "default": [
+         //       "",
+                "1",
+                "2 "
+            ]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "kitty -a pw-top pw-top"
+    },
+    "memory": {
+        "interval": 10,
+        "format": "<big>󰾆</big>  {used:0.1f}G",
+        "format-alt": "{percentage}% 󰾆",
+        "format-alt-click": "click",
+        "tooltip": true,
+        "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
+    },
+
+    "backlight": {
+        "format": "<big>󱩏</big>",
+        "on-scroll-down": "brightnessctl set 1%-",
+        "on-scroll-up": "brightnessctl set +1%",
+        "tooltip-format": "{percent}%"
+    },
+
+    "custom/logo": {
+        "format": "<big></big>",
+        "on-click": "",
+        "tooltip-format": "NixOS"
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 3
+    },
+    "custom/seperator":{
+        "format": "|",
+        "tooltip": false
+    },
+}
