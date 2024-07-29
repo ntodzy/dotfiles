@@ -2,3 +2,4 @@
 /.config/dconf
 /nixos/hardware-configuration
 /.config/pulse/cookie
+/github.pat
