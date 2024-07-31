@@ -96,6 +96,7 @@
     "clock": {
         "format": "{:%I:%M %p}",
         "tooltip-format": "{:%a, %d %b}",
+        "on-click": "ags -t control-panel"
     },
     "battery": {
         "interval": 5,

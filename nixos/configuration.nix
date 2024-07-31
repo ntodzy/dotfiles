@@ -74,6 +74,7 @@
    wireplumber # audio controller
    pavucontrol # audio management
    gnome-icon-theme # more icon compatibility
+   ags
 
    # notifications
    dunst
@@ -113,7 +114,7 @@
      NIXOS_OZONE_WL = "1";
   };
 
-xdg.portal = {
+  xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
@@ -132,7 +133,13 @@ xdg.portal = {
     enable = true;
     xwayland.enable = true;
   };
-  
+
+  services.blueman.enable=true;
+  hardware.bluetooth.settings = {
+      General = {
+        Experimental = true;
+      };
+  };
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
