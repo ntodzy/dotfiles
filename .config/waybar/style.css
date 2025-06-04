@@ -1,6 +1,5 @@
-/* github.com/pahasara/dotFiles */
-
-@import url("./themes/miku.css");
+@import url("./themes/theme1.css");
+@import url("./modules/generic.css");
 
 * {
     font-family: "CaskaydiaMono Nerd Font";
@@ -10,138 +9,70 @@
     font-weight: bold;
 }
 
-
 window#waybar {
-    background: @background;
-    border: 2px solid @border;
-    border-radius: 13;
-}
-
-#window {}
-
-#workspaces {}
-
-#workspaces button {
-    margin: 0 1px;
-    padding: 0 2px;
-    color: @fg-module;
-}
-
-#workspaces button:hover {
     background: transparent;
-}
-
-#workspaces button.focused {
-    border-top: 2px solid transparent;
-}
-
-#workspaces button.active {
-    color: @foreground;
-}
-
-#mode {
-    background: #64727D;
-    border-bottom: 3px solid white;
-}
-
-#custom-bandwidth,
-#custom-notification,
-#custom-update,
-#custom-logo,
-#idle_inhibitor,
-#window,
-#memory,
-#custom-storage,
-#network,
-#wireplumber,
-#battery,
-#tray,
-#backlight,
-#workspaces,
-#clock,
-#cpu,
-#custom-spotify,
-#mode {
-    padding: 2 10 2 8px;
-    background-color: @bg-module;
-    border-radius: 14px;
-    /* border: 2px solid @border-module; */
-    color: @fg-module;
-}
-
-#tray {
-    background-color: @bg-tray;
 }
 
 #custom-logo {
     color: @foreground;
-}
-
-#battery {}
-
-#battery icon {
-    color: red;
-}
-
-#battery.plugged {
-    color: @foreground;
-    animation-name: blink;
-    animation-duration: 1.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#battery.charging {
-    color: @bg-charging;
-    animation-name: blink;
-    animation-duration: 1.0s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-@keyframes blink {
-    to {
-        color: @fg-blink;
-    }
-}
-
-#battery.warning:not(.charging) {
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#cpu {}
-
-#memory {}
-
-#network {}
-
-#network.disconnected {}
-
-#idle_inhibitor {
-    color: @foreground;
-    padding: 2 4 2 8px;
-}
-
-#idle_inhibitor.activated {
-    color: @fg-module;
-}
-
-#pulseaudio {}
-
-#pulseaudio.muted {}
-
-#custom-spotify {}
-
-#custom-seperator {
-    color: @separator;
+    border: 2px solid @border;
+    border-radius: 13px;
+    min-width: 30px;
 }
 
 #tray {
-    padding: 3;
+    padding: 3px;
 }
+
+button {
+    color: white;
+}
+
+button:hover {
+    background: transparent;
+}
+
+/* Enable Border */
+#custom-spotify,
+#workspaces,
+#custom-logo,
+#clock,
+#network,
+#memory,
+#pulseaudio,
+#wireplumber,
+#user,
+#groups-apps,
+#taskbar {
+    border: 2px solid @border;
+    border-radius: 4px;
+}
+
+#taskbar button.active {
+    border-bottom: 2px solid white;
+    border-radius: 0px;
+}
+
+#custom-space {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+
+#workspaces {
+    color: @fg-module;
+}
+
+#workspaces button {
+    margin: 0 1px;
+    padding: 0 2px;
+}
+
+#custom-spotify {
+    background: black;
+    color: white;
+}
+
+

@@ -1,0 +1,21 @@
+#clock,
+#network,
+#memory,
+#pulseaudio,
+#wireplumber,
+#workspaces,
+#taskbar,
+#groups-apps,
+#user
+{
+    background: black;
+    color: white;
+    padding: 0px 10px;
+    min-width: 14px;
+}
+
+#custom-arrow-right,
+#custom-arrow-left {
+  margin: 0px 4px 2px 4px;               
+  color: white;
+}

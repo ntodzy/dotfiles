@@ -3,33 +3,57 @@
     //#####################
     //### CONFIGURATION ###
     //#####################
-    // "reload_style_on_change": true,
-    "margin-top": 5,
-    "margin-left": 10,
-    "margin-right": 10,
+    "reload_style_on_change": true,
+    "margin-left": 0,
+    "margin-right": 0,
     "margin-bottom": 0,
     "layer": "bottom",
+    "fixed-center": true,
     "position": "top",
-    "spacing": 0,
+    "spacing": 6,
     //##################
     //### BAR ORDER  ###
     //##################
     "modules-left": [
-        "custom/logo",
-        "hyprland/workspaces",
+        "user",
         "memory"
-        // "custom/spotify"
     ],
     "modules-center": [
-        "wlr/taskbar"
+        "group/centerleft",
+        "hyprland/workspaces",
+        "group/centeright"
     ],
     "modules-right": [
-        "backlight",
         "network",
         "wireplumber",
-        "battery",
-        "clock"
+        "clock",
+        "clock#cal"
+        //"battery"
     ],
+
+    "group/centerleft": {
+        "orientation": "inherit",
+        "drawer": { "transition-duration": 300, "transition-left-to-right": true },
+        "modules": [
+            "custom/space",
+            "wlr/taskbar"
+        ]
+    },
+    "group/centeright": {
+        "orientation": "inherit",
+        "drawer": { "transition-duration": 300, "transition-left-to-right": true },
+        "modules": [
+            "custom/space",
+            "custom/spotify"  
+        ]
+    },
+    "custom/space": {
+        "format": "<big> </big>",
+        "tooltip": false,
+    },
+
+    "custom/arrow-left":  { "format": "&lt;", "tooltip": false },
+    "custom/arrow-right": { "format": ">", "tooltip": false },
 
     //################
     //### MODULES  ###
@@ -41,9 +65,6 @@
         "on-click": "activate",
         "persistent-workspaces": {
             "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
             // "5": [],
             // "6": [],
             // "7": [],
@@ -81,7 +102,6 @@
             ],
             "rewrite": {
                 "Firefox Web Browser": "Firefox",
-                "Foot Server": "Terminal"
             }
     },
 
@@ -90,7 +110,7 @@
         "tooltip": false
     },
     "clock#cal": {
-        "format": "{:%a, %d %b}",
+        "format": "{:%A, %b %d}",
          "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "clock": {
@@ -98,32 +118,10 @@
         "tooltip-format": "{:%a, %d %b}",
         "on-click": "ags -t control-panel"
     },
-    "battery": {
-        "interval": 5,
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon}",
-        "format-charging": "",
-        "format-plugged": "",
-        // "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "{icon} {capacity}%",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        "tooltip-format": "{time} ({capacity}%)"
-    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         /* "format-wifi": "{essid} ({signalStrength}%) ", */
-        "format-wifi": "{icon}",
+        "format-wifi": "{icon}  {essid}",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{essid}",
         "format-linked": "{ifname} (No IP) ",
@@ -159,7 +157,7 @@
         ]
     },
     "wireplumber": {
-        "format": "{icon}",
+        "format": "{icon}   {volume}%",
         "format-full": "{icon} {volume}%",
         "format-muted": " ",
         "format-icons": [
@@ -197,6 +195,7 @@
         "on-click": "pavucontrol",
         "on-click-right": "kitty -a pw-top pw-top"
     },
+
     "memory": {
         "interval": 10,
         "format": "<big>󰾆</big>  {used:0.1f}G",
@@ -206,24 +205,26 @@
         "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
     },
 
-    "backlight": {
-        "format": "<big>󱩏</big>",
-        "on-scroll-down": "brightnessctl set 1%-",
-        "on-scroll-up": "brightnessctl set +1%",
-        "tooltip-format": "{percent}%"
-    },
-
     "custom/logo": {
-        "format": "<big></big>",
+        "format": "<big></big> {user}",
         "on-click": "",
-        "tooltip-format": "NixOS"
+        "tooltip-format": "{work_M} "
+    },
+    "user": {
+        "format": "<big></big>  {user}",
+        "icon": false,
+        "tooltip-format": "Uptime {work_M}min"
     },
     "tray": {
         "icon-size": 15,
         "spacing": 3
     },
-    "custom/seperator":{
-        "format": "|",
-        "tooltip": false
-    },
+    "custom/spotify": {
+        "exec": "~/.config/waybar/scripts/spotify.sh waybar",
+        "interval": 2,
+        "max-length": 20,
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+    }
+
 }
