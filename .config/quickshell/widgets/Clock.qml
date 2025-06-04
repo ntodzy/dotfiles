@@ -33,6 +33,6 @@ Item {
         color: "white"
         font.bold: true
         font.pixelSize: 12
-        text: Qt.formatDateTime(clock.date, "h:mm:ss AP")
+        text: Qt.formatDateTime(clock.date, "h:mmap - M/d")
     }
 }
