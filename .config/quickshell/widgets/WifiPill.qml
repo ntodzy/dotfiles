@@ -3,78 +3,46 @@ import QtQuick.Layouts
 import Quickshell
 import Quickshell.Wayland
 import Quickshell.Widgets
-import Quickshell.Iohttps://github.com/ntodzy/dotfiles.git
+import Quickshell.Io
 
-import Quickshell.Services.Pipewire
 
-import "../generic/Pill" as Pill
+import "../generics/Pill.qml" as Pill
+import "../data/" as Data
 
 Item {
     id: soundPill
-    property bool muted: Pipewire.defaultAudioSink?.audio.muted ?? false
-
-    function formatVolume(volume, stat) {
-        if (stat) {
-            return "mute";
-        }
-        return `${volume} 󰕾`;
-    }
-
-    PwObjectTracker {
-        objects: [ Pipewire.defaultAudioSink ]
-    }
-
-    Connections {
-        target: Pipewire.defaultAudioSink?.audio
-
-        function onMutedChanged() {
-            print("SoundPill: Muted changed to", Pipewire.defaultAudioSink?.audio.muted);
-
-            // update the pill background color based on mute status
-            soundPillBackground.color = Pipewire.defaultAudioSink?.audio.muted ? "red" : "white";
-            soundPill.muted = Pipewire.defaultAudioSink?.audio.muted;
-
-        }
-    }
-
     MarginWrapperManager {
         margin: 0
         resizeChild: true
-
     }
 
-    Rectangle {
+    WrapperRectangle {
         color: "white"
-        radius: 10
-        implicitHeight: 31
+        radius: 6
+
         id: soundPillBackground
 
-        MarginWrapperManager {
-            margin: 0
-            resizeChild: true
-        }
+        // wrapper
+        margin: 0
+        resizeChild: true
 
         RowLayout {
-            spacing: 2
+            spacing: 0
 
             Text {
-                text: ` ${Math.floor(Pipewire.defaultAudioSink?.audio.volume * 100)}`
+                text: `${Data.Network.ssid}`
                 color: "black"
             }
             
-            Rectangle {
+            WrapperRectangle {
                 color: soundPill.muted ? "darkred" : "white"
                 id: soundPillIcon
                 radius: 20
-
-                MarginWrapperManager {
-                    margin: 2
-                    resizeChild: true
-                    implicitWidth: 14
-                }
+                resizeChild: true
+                margin: 2
 
                 Text {
-                    text: "󰕾"
+                    text: "󰤨 "
                     color: "black"
                    
                     Layout.fillHeight: true

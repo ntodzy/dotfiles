@@ -90,20 +90,21 @@ Scope {
 
                         RowLayout {
                             anchors {
-                                right : parent.right
+                                right: parent.right
+                                rightMargin: 10
                                 verticalCenter: parent.verticalCenter
 
                             }
                             layoutDirection: Qt.RightToLeft
                             spacing: 5
 
-                            Text {
-                                text: "100%"
-                                color: "black"
-                                font.pixelSize: 12
-                            }
+                            
                     
                             Widgets.SoundPill {
+                            }
+
+                            Widgets.WifiPill {
+
                             }
                         }
                     }

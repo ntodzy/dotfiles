@@ -7,7 +7,7 @@ import Quickshell.Io
 
 import Quickshell.Services.Pipewire
 
-import "../generic/Pill" as Pill
+import "../generics/Pill.qml" as Pill
 
 
 
@@ -42,38 +42,31 @@ Item {
     MarginWrapperManager {
         margin: 0
         resizeChild: true
-
     }
 
-    Rectangle {
+    WrapperRectangle {
         color: "white"
-        radius: 10
-        implicitHeight: 31
+        radius: 6    
         id: soundPillBackground
 
-        MarginWrapperManager {
-            margin: 0
-            resizeChild: true
-        }
+        margin: 0
+        resizeChild: true
 
         RowLayout {
-            spacing: 2
+            spacing: 0
 
             Text {
                 text: ` ${Math.floor(Pipewire.defaultAudioSink?.audio.volume * 100)}`
                 color: "black"
             }
             
-            Rectangle {
+            WrapperRectangle {
                 color: soundPill.muted ? "darkred" : "white"
                 id: soundPillIcon
                 radius: 20
 
-                MarginWrapperManager {
-                    margin: 2
-                    resizeChild: true
-                    implicitWidth: 14
-                }
+                resizeChild: true
+                margin: 2
 
                 Text {
                     text: "󰕾"
