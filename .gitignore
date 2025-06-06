@@ -3,3 +3,4 @@
 /nixos/hardware-configuration.nix
 /.config/pulse/cookie
 /github.pat
+/.config/spotify

@@ -7,7 +7,7 @@ import Quickshell.Io
 
 import Quickshell.Services.Pipewire
 
-import "../generics/Pill.qml" as Pill
+import "root:/generics/Pill.qml" as Pill
 
 
 

@@ -5,7 +5,7 @@ import Quickshell.Io
 import Quickshell.Widgets
 import QtQuick.Layouts
 
-import "../data/" as Data
+import "root:/data/" as Data
 
 Item {
     anchors {
@@ -33,6 +33,6 @@ Item {
         color: "white"
         font.bold: true
         font.pixelSize: 12
-        text: Qt.formatDateTime(clock.date, "h:mmap - M/d")
+        text: Qt.formatDateTime(clock.date, "MMM d - HH:mm") // ap:=am/pm,
     }
 }

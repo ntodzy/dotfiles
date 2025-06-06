@@ -5,12 +5,11 @@ import Quickshell.Wayland
 import Quickshell.Widgets
 import Quickshell.Io
 
-
-import "../generics/Pill.qml" as Pill
-import "../data/" as Data
+import "root:/data/" as Data
 
 Item {
     id: soundPill
+
     MarginWrapperManager {
         margin: 0
         resizeChild: true
@@ -20,7 +19,7 @@ Item {
         color: "white"
         radius: 6
 
-        id: soundPillBackground
+        id: networkPillBackground
 
         // wrapper
         margin: 0
@@ -28,16 +27,25 @@ Item {
 
         RowLayout {
             spacing: 0
+            HoverHandler {
+                id: networkPillHover
+                onHoveredChanged: {
+                    wifiSSID.visible = networkPillHover.hovered;
+                }
+            }
 
             Text {
+                id: wifiSSID
                 text: `${Data.Network.ssid}`
                 color: "black"
+                visible: false
             }
-            
+
+
             WrapperRectangle {
-                color: soundPill.muted ? "darkred" : "white"
+                color: "white"
                 id: soundPillIcon
-                radius: 20
+                radius: 6
                 resizeChild: true
                 margin: 2
 

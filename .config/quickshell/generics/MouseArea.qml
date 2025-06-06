@@ -16,7 +16,7 @@ MouseArea {
   anchors.fill: parent
   hoverEnabled: true
 
-  onContainsMouseChanged: layer.opacity = (area.containsMouse) ? area.hoverOpacity : 0
+  onContainsMouseChanged: {  print("contain!") }
   onContainsPressChanged: layer.opacity = (area.containsPress) ? area.clickOpacity : area.hoverOpacity
 
   Rectangle {

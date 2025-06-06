@@ -7,7 +7,10 @@ import Quickshell.Io
 Singleton {
     id: netman
     property string ssid: "DISCON"
-    property int signal: 0;
+    property int signal: 0
+
+    property int bt_status: 0
+    property int bt_conn: 0
 
     Process {
         id: netman_proc
@@ -28,11 +31,32 @@ Singleton {
     }
 
     Timer {
-        interval: 1000 * 5 // 5 seconds
+        interval: 1000 * 10 // 10s.. i wonder if theres a callback for this
         repeat: true
         running: true
         onTriggered: netman_proc.running = true;
+    }
 
+    Process {
+        id: netman_btproc
+        command: ["sh", "bluetooth.sh"]
+        running: true
+        stdout: SplitParser {
+            onRead: (data) => { 
+                let split = data.trim().split(",");
+                bt_status = parseInt(split[0].trim());
+                bt_conn = parseInt(split[1].trim());
+
+                // print(`Bluetooth Status: ${bt_status}, Connected Devices: ${bt_conn}`);
+            }
+        }
+    }
+
+    Timer {
+        interval: 1000 * 10 // 10s
+        repeat: true
+        running: true
+        onTriggered: netman_btproc.running = true;
     }
 
     property string wifiIcon: "󰤨"

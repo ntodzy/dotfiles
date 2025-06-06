@@ -1,13 +1,15 @@
+//@ pragma UseQApplication
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Wayland
 import Quickshell.Widgets
 import Quickshell.Io
-import "MouseArea.qml"
-import "./widgets/" as Widgets
+
+import "root:/widgets/" as Widgets
 
 Scope {
+    id: root
     Variants {
         model: Quickshell.screens 
         delegate: WlrLayershell {
@@ -22,7 +24,7 @@ Scope {
 
             color: "transparent"
             focusable: false;
-            implicitHeight: 36
+            implicitHeight: 30
             layer: WlrLayer.Top
             screen: modelData
 
@@ -39,11 +41,16 @@ Scope {
             Rectangle {
                 id: notch
                 width: 600
-                height: 36
+                height: 30
                 bottomLeftRadius: 25
                 bottomRightRadius: 18
                 anchors.horizontalCenter: parent.horizontalCenter
-                color: "blue"
+                color: "#2c2c2c"
+                border {
+                    color: "#00affa"
+                    width: 2
+                }
+                // opacity: 0.93
 
                 ///////////// BAR 
                 RowLayout {
@@ -56,20 +63,33 @@ Scope {
                         Layout.fillHeight: true
     
                         color: "transparent"
-                      
-                        height: 30
 
-                        Text {
-                            text: "Quickshell"
-                            color: "black"
-                            
-                            font.pixelSize: 20
+                        RowLayout {
                             anchors {
-                                verticalCenter: parent.verticalCenter
                                 left: parent.left
                                 leftMargin: 10
+                                verticalCenter: parent.verticalCenter
                             }
+                            spacing: 5
+
+                            // items
+                            Widgets.Tray {}
+                            
+
                         }
+
+
+                        // Text {
+                        //     text: "Quickshell"
+                        //     color: "white"
+                            
+                        //     font.pixelSize: 12
+                        //     anchors {
+                        //         verticalCenter: parent.verticalCenter
+                        //         left: parent.left
+                        //         leftMargin: 10
+                        //     }
+                        // }
                     }
 
                     // CENTER
@@ -79,13 +99,14 @@ Scope {
                         color: "transparent"
 
                         // items
-                        Widgets.Clock {} // this warns 
+                        Widgets.Clock {}
                     }
                     
                     // RIGHT
                     Rectangle {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
+                        
                         color: "transparent"
 
                         RowLayout {
@@ -100,12 +121,10 @@ Scope {
 
                             
                     
-                            Widgets.SoundPill {
-                            }
-
-                            Widgets.WifiPill {
-
-                            }
+                            Widgets.SoundPill {} 
+                            Widgets.WifiPill {}
+                            Widgets.BluetoothPill {}
+                            
                         }
                     }
                 }
