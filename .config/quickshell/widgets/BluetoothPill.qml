@@ -41,6 +41,9 @@ Item {
             
             WrapperRectangle {
                 color: {
+                     print("Unknown Bluetooth status:", Data.Network.bt_status);
+                     print("Unknown Bluetooth connections:", Data.Network.bt_conn);
+                     
                     if (Data.Network.bt_conn > 0 ) {
                         return "blue"
                     }
@@ -53,6 +56,10 @@ Item {
                     else if (Data.Network.bt_status == 2) {
                         return "green"
                     }
+
+                    print("Unknown Bluetooth status:", Data.Network.bt_status);
+
+                    return "pink"
                 }
                 id: btPillIcon
                 radius: 20

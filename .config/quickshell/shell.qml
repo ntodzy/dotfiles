@@ -1,10 +1,12 @@
 //@ pragma UseQApplication
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Controls
 import Quickshell
 import Quickshell.Wayland
 import Quickshell.Widgets
 import Quickshell.Io
+import Quickshell.Services.SystemTray
 
 import "root:/widgets/" as Widgets
 
@@ -135,6 +137,21 @@ Scope {
         }
 
 
+    }
+
+    Variants {
+        model: Quickshell.screens 
+        delegate: WlrLayershell {
+            id: bar
+            required property ShellScreen modelData
+
+            anchors {
+                left: true
+                bottom: true
+            }
+
+
+        }
     }
 }
 
