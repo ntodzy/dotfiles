@@ -5,7 +5,7 @@ import Quickshell.Services.SystemTray
 import QtQuick.Layouts
 import QtQuick
 
-import "root:/widgets/"
+import "root:/widgets/" as Widgets
 
 Item {
     id: trayWidget
@@ -42,7 +42,7 @@ Item {
                 id: items
                 model: SystemTray.items
 
-                TrayItem {}
+                Widgets.TrayItem {}
             }
         }
     }
