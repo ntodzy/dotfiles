@@ -1,12 +1,14 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+
 import Quickshell
 import Quickshell.Widgets
 
 import Quickshell.Services.Mpris
 
 import "root:/windows/Dashboard/" as Dashboard
+import "root:/Services/" as Services
 
 
 
@@ -26,8 +28,8 @@ Dashboard.DashItem { // just a fancy wrapper for an item and a few set propertie
         radius: 24
         clip: true
 
-        border.width: 1 * scale
-        border.color: "black"
+        // border.width: 1 * scale
+        // border.color: "black"
 
         layer.enabled: true
         layer.smooth: true
@@ -93,7 +95,7 @@ Dashboard.DashItem { // just a fancy wrapper for an item and a few set propertie
             
             Text {
                 Layout.fillWidth: true
-                text: Mpris.players.values[idx] ? Mpris.players.values[idx].trackTitle.slice(0,44) : "No Music Playing"
+                text: Mpris.players.values[idx] ? Mpris.players.values[idx].trackTitle.slice(0,40) : "No Music Playing"
                 color: "white"
                 font.pixelSize: 12 * scale
                 Layout.alignment: Qt.AlignLeft
@@ -109,13 +111,6 @@ Dashboard.DashItem { // just a fancy wrapper for an item and a few set propertie
                 font.pixelSize: 10 * scale
                 Layout.alignment: Qt.AlignLeft
             }
-
-            // Text {
-            //     text: `(${Mpris.players.values[idx] ? Mpris.players.values[idx].trackAlbum : "No Music Playing"})`
-            //     color: "white"
-            //     font.pixelSize: 10 * scale
-            //     Layout.alignment: Qt.AlignRight
-            // }
         }
 
         RowLayout {
@@ -156,13 +151,13 @@ Dashboard.DashItem { // just a fancy wrapper for an item and a few set propertie
                     width: progressSlider.availableWidth
                     height: implicitHeight
                     radius: 2
-                    color: "black"
+                    color: Services.Colors.tertiary
                     opacity: 0.5
 
                     Rectangle {
                         width: progressSlider.visualPosition * parent.width
                         height: parent.height
-                        color: "white"
+                        color: Services.Colors.on_tertiary
                         radius: 2
 
                         Behavior on width {
@@ -187,7 +182,7 @@ Dashboard.DashItem { // just a fancy wrapper for an item and a few set propertie
 
             Timer {
                 id: progressTimer
-                interval: 5000 // Update every second
+                interval: 3000 // Update every second
                 running: true
                 repeat: true
 

@@ -6,9 +6,11 @@ import Quickshell.Widgets
 import Quickshell.Io
 
 import "root:/data/" as Data
+import "root:/Services/" as Services
 
 Item {
     id: soundPill
+
 
     MarginWrapperManager {
         margin: 0
@@ -16,7 +18,7 @@ Item {
     }
 
     WrapperRectangle {
-        color: "white"
+        color: Services.Colors.secondary
         radius: 6
 
         id: networkPillBackground
@@ -36,14 +38,14 @@ Item {
 
             Text {
                 id: wifiSSID
-                text: `${Data.Network.ssid}`
+                text: Data.Network.ssid
                 color: "black"
                 visible: false
             }
 
 
             WrapperRectangle {
-                color: "white"
+                color: Services.Colors.secondary
                 id: soundPillIcon
                 radius: 6
                 resizeChild: true
@@ -51,7 +53,7 @@ Item {
 
                 Text {
                     text: "󰤨 "
-                    color: "black"
+                    color:"black"
                    
                     Layout.fillHeight: true
                     horizontalAlignment: Text.AlignHCenter

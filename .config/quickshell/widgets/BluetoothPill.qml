@@ -6,6 +6,8 @@ import Quickshell.Widgets
 import Quickshell.Io
 
 import "root:/data/" as Data
+import "root:/Services/" as Services
+
 
 Item {
     id: btPill
@@ -41,8 +43,6 @@ Item {
             
             WrapperRectangle {
                 color: {
-                     print("Unknown Bluetooth status:", Data.Network.bt_status);
-                     print("Unknown Bluetooth connections:", Data.Network.bt_conn);
                      
                     if (Data.Network.bt_conn > 0 ) {
                         return "blue"

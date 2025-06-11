@@ -10,6 +10,7 @@ import "root:/widgets/"
 MouseArea {
     id: root
     required property SystemTrayItem modelData
+    property bool isActive: false
 
     implicitWidth: 20
     implicitHeight: 20
@@ -18,10 +19,11 @@ MouseArea {
 
     onClicked: (event) => {
         if (event.button === Qt.LeftButton) {
-            print(bar.x)
             modelData.activate()
             
         } else if (modelData.hasMenu) {
+            isActive = !isActive // set to active
+
             trayMenuAnchor.open()
         }
     }
@@ -44,18 +46,22 @@ MouseArea {
 
         implicitHeight: 0
 
-
         PopupWindow {
             id: parentWindow
             anchor.window: topLevel
+
+            visible: true
             color: "transparent"
+            implicitWidth: root.modelData.visble ? root.modelData.minimumWidth : 1
+            // implicitHeight: root.modelData.visible ? 200 : 1
             anchor.rect {
                 x: icon.mapToItem(null, 0, 0).x + (icon.width - width) / 2
                 y: 3 // acts as a margin
             }
-            
-            visible: true
         }
+        
+
+
     }
 
     IconImage {

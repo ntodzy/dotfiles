@@ -7,8 +7,9 @@ import Quickshell.Widgets
 import Quickshell.Io
 
 import "root:/widgets/" as Widgets
+import "root:/Services/" as Services
 
- Scope {
+Scope {
     id: root
     Variants {
         model: Quickshell.screens 
@@ -38,24 +39,17 @@ import "root:/widgets/" as Widgets
                 }
             }
 
-            Rectangle {
+            WrapperRectangle {
                 id: notch
                 width: 600
                 height: 30
                 bottomLeftRadius: 25
                 bottomRightRadius: 18
                 anchors.horizontalCenter: parent.horizontalCenter
-                color: "#2c2c2c"
-                border {
-                    color: "#00affa"
-                    width: 2
-                }
-                // opacity: 0.93
+                color: Services.Colors.primary_container
+
                 
                 RowLayout {
-                    width: parent.width
-                    height: parent.height
-
                     // LEFT
                     Rectangle {
                         Layout.fillWidth: true

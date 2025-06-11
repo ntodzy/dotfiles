@@ -8,6 +8,7 @@ import Quickshell.Io
 import Quickshell.Services.Pipewire
 
 import "root:/generics/Pill.qml" as Pill
+import "root:/Services/" as Services
 
 
 
@@ -33,7 +34,7 @@ Item {
             print("SoundPill: Muted changed to", Pipewire.defaultAudioSink?.audio.muted);
 
             // update the pill background color based on mute status
-            soundPillBackground.color = Pipewire.defaultAudioSink?.audio.muted ? "red" : "white";
+            soundPillBackground.color = Pipewire.defaultAudioSink?.audio.muted ? Services.Colors.error_container : Services.Colors.secondary
             soundPill.muted = Pipewire.defaultAudioSink?.audio.muted;
 
         }
@@ -45,7 +46,7 @@ Item {
     }
 
     WrapperRectangle {
-        color: "white"
+        color: Services.Colors.secondary
         radius: 6    
         id: soundPillBackground
 
@@ -56,12 +57,12 @@ Item {
             spacing: 0
 
             Text {
-                text: ` ${Math.floor(Pipewire.defaultAudioSink?.audio.volume * 100)}`
-                color: "black"
+                text: ` ${Math.floor(Pipewire.defaultAudioSink?.audio.volume * 100)} `
+                color: soundPill.muted ? "white" : "black"
             }
             
             WrapperRectangle {
-                color: soundPill.muted ? "darkred" : "white"
+                color: soundPill.muted ? Services.Colors.on_error : Services.Colors.secondary
                 id: soundPillIcon
                 radius: 20
 
@@ -70,7 +71,7 @@ Item {
 
                 Text {
                     text: "󰕾"
-                    color: "black"
+                    color: soundPill.muted ? "white" : "black"
                    
                     Layout.fillHeight: true
                     horizontalAlignment: Text.AlignHCenter
