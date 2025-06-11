@@ -1,9 +1,11 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import QtQuick.Effects
 import Quickshell
 import Quickshell.Widgets
 
+import "root:/Services/" as Services
 
 Item {
     id: root
@@ -16,11 +18,15 @@ Item {
     clip: true
 
 
+
     WrapperRectangle {
         id: rect
         anchors {
             fill: parent
         }
     }
+
+
+    
 
 }

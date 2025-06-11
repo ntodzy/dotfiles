@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import QtQuick.Effects
 
 import Quickshell
 import Quickshell.Widgets
@@ -41,7 +42,7 @@ Dashboard.DashItem { // just a fancy wrapper for an item and a few set propertie
             source: Mpris.players.values[idx] ? Mpris.players.values[idx].trackArtUrl : ""
             fillMode: Image.PreserveAspectCrop
             // visible: false
-            opacity: 0.3 // Semi-transparent background
+            opacity: 0.5 // Semi-transparent background
         }
 
     }

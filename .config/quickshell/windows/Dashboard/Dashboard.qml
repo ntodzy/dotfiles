@@ -31,7 +31,7 @@ Scope {
             
             Rectangle {
                 anchors.fill: parent
-                color: Services.Colors.primary_container
+                color: Services.Colors.surface
                 // border {
                 //     color: "#00affa"
                 //     width: 2
@@ -57,10 +57,12 @@ Scope {
                         width: parent.width
                         rows: 9
                         columns: 1
+                        rowSpacing: 8
                         id: controlPanel
 
                         RowLayout {
                             width: parent.width
+                            spacing: 8
 
                             // Profile Picture
                             Rectangle {
@@ -94,6 +96,7 @@ Scope {
 
                         }
                         RowLayout {
+                            spacing: 8
                             width: parent.width
                             height: 16*3
 
@@ -104,6 +107,7 @@ Scope {
 
                         RowLayout {
                             width: parent.width
+                            spacing: 8
 
                             // Sound Bar
                             DashItem {
@@ -120,6 +124,7 @@ Scope {
                         }
                         RowLayout {
                             width: parent.width
+                            spacing: 8
 
                             // Brightness Bar
                             DashItem {
@@ -136,13 +141,14 @@ Scope {
                         }
                         RowLayout {
                             width: parent.width
+                            spacing: 8
 
                             DashBtn {
-                                color: "Green"
+                                color: Services.Colors.primary
 
                                 Text {
                                     text: "󰖩"
-                                    color: "white"
+                                    color: Services.Colors.on_primary
                                     anchors.centerIn: parent
                                     font.pixelSize: 30
                                 }
@@ -150,11 +156,11 @@ Scope {
 
                             DashBtn {
                                 // BLUETOOTH
-                                color: "Blue"
+                                color: Services.Colors.surface_variant
 
                                 Text {
                                     text: "󰂯"
-                                    color: "white"
+                                    color: Services.Colors.on_surface_variant
                                     anchors.centerIn: parent
                                     font.pixelSize: 30
                                 }
@@ -163,14 +169,15 @@ Scope {
                         
                         RowLayout {
                             width: parent.width
+                            spacing: 8
 
                             DashBtn {
                                 // RECORD
-                                color: "red"
+                                color: Services.Colors.surface_variant
                                 
                                 Text {
                                     text: "Record"
-                                    color: "white"
+                                    color: Services.Colors.on_surface_variant
                                     anchors.centerIn: parent
                                     font.pixelSize: 30
                                 }
@@ -179,10 +186,10 @@ Scope {
                             DashBtn {
                                 // UNKNOWN
 
-                                color: "pink"
+                                color: Services.Colors.primary_container
                                 Text {
                                     text: "?"
-                                    color: "white"
+                                    color: Services.Colors.on_primary_container
                                     anchors.centerIn: parent
                                     font.pixelSize: 30
                                 }
@@ -191,12 +198,13 @@ Scope {
 
                         RowLayout {
                             width: parent.width
+                            spacing: 8
 
                             // TODO WEATHER PILL
                             Rectangle {
                                 Layout.fillWidth: true
-                                height: 50
-                                color: "green"
+                                height: 64
+                                color: Services.Colors.tertiary
 
                                 Text {
                                     text: "󰖨"
@@ -209,6 +217,7 @@ Scope {
 
                         RowLayout {
                             width: parent.width
+                            spacing: 8
 
                             // CALENDAR
                             Rectangle {
@@ -227,6 +236,7 @@ Scope {
 
                         // Power Controls
                         RowLayout {
+                            spacing: 8
                             width: parent.width 
 
                             DashBtn {
@@ -242,19 +252,19 @@ Scope {
                             }
 
                             DashBtn {
-                                color: "purple"
+                                color: Services.Colors.tertiary
                                 radius: 10
 
                                 Text {
                                     text: "\udb81\uddfd"
-                                    color: "white"
+                                    color: "Black"
                                     anchors.centerIn: parent
                                     font.pixelSize: 30
                                 }
                             }
 
                             DashBtn {
-                                color: "red"
+                                color: Services.Colors.tertiary
                                 radius: 10
 
                                 Text {
@@ -266,7 +276,7 @@ Scope {
                             }
 
                             DashBtn{
-                                color: "red"
+                                color: Services.Colors.on_error
                                 radius: 10
 
                                 Text {
