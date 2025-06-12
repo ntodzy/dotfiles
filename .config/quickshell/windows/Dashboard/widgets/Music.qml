@@ -27,6 +27,7 @@ Dashboard.DashItem { // just a fancy wrapper for an item and a few set propertie
         anchors.fill: parent
         color: "black"
         radius: 24
+        
         clip: true
 
         // border.width: 1 * scale

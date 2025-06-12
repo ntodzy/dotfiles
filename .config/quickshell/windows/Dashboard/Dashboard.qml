@@ -8,6 +8,7 @@ import "./DashBtn.qml"
 import "root:/windows/Dashboard/widgets" as Widgets
 
 import "root:/Services" as Services
+import "root:/Data/" as Data
 
 Scope {
     id: root
@@ -112,11 +113,11 @@ Scope {
                             // Sound Bar
                             DashItem {
                                 scale: 1
-                                rect.color: "pink"
+
 
                                 Text {
                                     text: "󰕾"
-                                    color: "black"
+                                    color: parent.txtclr
                                     anchors.centerIn: parent
                                     font.pixelSize: 12
                                 }
@@ -129,7 +130,7 @@ Scope {
                             // Brightness Bar
                             DashItem {
                                 scale: 1
-                                rect.color: "grey"
+
 
                                 Text {
                                     text: "brightness"
@@ -144,25 +145,23 @@ Scope {
                             spacing: 8
 
                             DashBtn {
-                                color: Services.Colors.primary
 
                                 Text {
                                     text: "󰖩"
-                                    color: Services.Colors.on_primary
+                                    color: parent.txtclr
                                     anchors.centerIn: parent
-                                    font.pixelSize: 30
+                                    font.pixelSize: 20
                                 }
                             }
 
                             DashBtn {
                                 // BLUETOOTH
-                                color: Services.Colors.surface_variant
 
                                 Text {
                                     text: "󰂯"
-                                    color: Services.Colors.on_surface_variant
+                                    color: parent.txtclr
                                     anchors.centerIn: parent
-                                    font.pixelSize: 30
+                                    font.pixelSize: 20
                                 }
                             }
                         }
@@ -173,25 +172,24 @@ Scope {
 
                             DashBtn {
                                 // RECORD
-                                color: Services.Colors.surface_variant
+                                // color: Services.Colors.surface_variant
                                 
                                 Text {
-                                    text: "Record"
-                                    color: Services.Colors.on_surface_variant
+                                    text: ""
+                                    color: parent.txtclr
                                     anchors.centerIn: parent
-                                    font.pixelSize: 30
+                                    font.pixelSize: 20
                                 }
                             }
 
                             DashBtn {
                                 // UNKNOWN
 
-                                color: Services.Colors.primary_container
                                 Text {
                                     text: "?"
-                                    color: Services.Colors.on_primary_container
+                                    color: parent.txtclr
                                     anchors.centerIn: parent
-                                    font.pixelSize: 30
+                                    font.pixelSize: 20
                                 }
                             }
                         }
@@ -240,7 +238,6 @@ Scope {
                             width: parent.width 
 
                             DashBtn {
-                                color: "yellow"
                                 radius: 10
 
                                 Text {
@@ -252,7 +249,7 @@ Scope {
                             }
 
                             DashBtn {
-                                color: Services.Colors.tertiary
+                                // color: Services.Colors.tertiary
                                 radius: 10
 
                                 Text {
@@ -264,7 +261,7 @@ Scope {
                             }
 
                             DashBtn {
-                                color: Services.Colors.tertiary
+                                // color: Services.Colors.tertiary
                                 radius: 10
 
                                 Text {
@@ -276,7 +273,7 @@ Scope {
                             }
 
                             DashBtn{
-                                color: Services.Colors.on_error
+                                disabled: Services.Colors.on_error
                                 radius: 10
 
                                 Text {
@@ -291,13 +288,11 @@ Scope {
                     }
 
                     // Notification Row, this fills the remaining space...
-
                     GridLayout {
                         width: parent.width
                         height: parent.height - controlPanel.height
                         rows: 2
                         columns: 1
-
                         
                         anchors {
                             left: parent.left
