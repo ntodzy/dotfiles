@@ -10,7 +10,7 @@ import "root:/Services/" as Services
 Item {
     id: root
 
-    required property int scale;
+    required property double scale;
     property alias rect: rect
     
     Layout.fillWidth: true;

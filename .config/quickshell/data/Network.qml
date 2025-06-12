@@ -54,12 +54,12 @@ Singleton {
         running: true
         stdout: SplitParser {
             onRead: (data) => { 
-                print("Bluetooth Data:", data);
+                // print("Bluetooth Data:", data);
                 let split = data.trim().split(",");
                 bt_status = parseInt(split[0].trim());
                 bt_conn = parseInt(split[1].trim());
 
-                print(`Bluetooth Status: ${bt_status}, Connected Devices: ${bt_conn}`);
+                // print(`Bluetooth Status: ${bt_status}, Connected Devices: ${bt_conn}`);
             }
         }
     }

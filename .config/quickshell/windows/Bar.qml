@@ -46,7 +46,7 @@ Scope {
                 bottomLeftRadius: 25
                 bottomRightRadius: 18
                 anchors.horizontalCenter: parent.horizontalCenter
-                color: Services.Colors.primary_container
+                color: Services.Colors.surface_container
 
                 
                 RowLayout {

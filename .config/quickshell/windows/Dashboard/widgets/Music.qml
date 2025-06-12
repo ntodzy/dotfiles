@@ -17,17 +17,17 @@ import "root:/Services/" as Services
 Dashboard.DashItem { // just a fancy wrapper for an item and a few set properties
     width: parent.width  
     scale: 6
-
-    property int idx: 0 // Index of the Mpris player to display
     rect.color: "transparent" // Make the background transparent to show the Image
+    property int idx: 0 // Index of the Mpris player to display
+
 
     // Create an Image to display the background
     ClippingRectangle {
         id: clip
         anchors.fill: parent
-        color: "black"
+        color: Services.Colors.surface
         radius: 24
-        
+        border.color: Services.Colors.outline
         clip: true
 
         // border.width: 1 * scale
@@ -153,13 +153,13 @@ Dashboard.DashItem { // just a fancy wrapper for an item and a few set propertie
                     width: progressSlider.availableWidth
                     height: implicitHeight
                     radius: 2
-                    color: Services.Colors.tertiary
-                    opacity: 0.5
+                    color: Services.Colors.tertiary_container
+                    opacity: 0.6
 
                     Rectangle {
                         width: progressSlider.visualPosition * parent.width
                         height: parent.height
-                        color: Services.Colors.on_tertiary
+                        color: Services.Colors.tertiary
                         radius: 2
 
                         Behavior on width {

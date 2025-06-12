@@ -36,7 +36,7 @@ DashItem {
         }
     }
 
-    Behavior on root.rect.border.width {
+    Behavior on rect.border.width {
         NumberAnimation {
             duration: 150
             easing.type: Easing.InOutQuad
@@ -56,6 +56,11 @@ DashItem {
 
         onClicked: (event) => {
             active = !active
+
+            if (event.button === Qt.RightButton) {
+                  return // ignore
+            }
+            
 
             if (active) {
                 

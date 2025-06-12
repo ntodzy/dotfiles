@@ -2,11 +2,13 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 import Quickshell
+import Quickshell.Services.Pipewire
+import Quickshell.Widgets
+import QtQuick.Effects
 
 import "./DashItem.qml"
 import "./DashBtn.qml"
 import "root:/windows/Dashboard/widgets" as Widgets
-
 import "root:/Services" as Services
 import "root:/Data/" as Data
 
@@ -32,11 +34,13 @@ Scope {
             
             Rectangle {
                 anchors.fill: parent
-                color: Services.Colors.surface
-                // border {
-                //     color: "#00affa"
-                //     width: 2
-                // }
+                color: Services.Colors.surface_container
+
+                border {
+                    width: 1
+                    color: Services.Colors.outline
+                }
+
 
                 bottomRightRadius: 18
                 topRightRadius: 18
@@ -66,10 +70,20 @@ Scope {
                             spacing: 8
 
                             // Profile Picture
-                            Rectangle {
+                            ClippingRectangle {
+                                id: pfpClip
                                 width: 48
                                 height: 48
-                                radius: 48
+                                radius: 24
+                                color: "transparent"
+
+                                Image {
+                                    id: pfpImage
+                                    source: "/home/todzy/.config/assets/pfp.jpg" // Replace with your profile image path
+                                    fillMode: Image.PreserveAspectCrop
+                                    anchors.fill: parent
+                                    smooth: true
+                                }
                             }
 
                             // Name and Uptime
@@ -111,31 +125,179 @@ Scope {
                             spacing: 8
 
                             // Sound Bar
+                            // Brightness Bar
                             DashItem {
-                                scale: 1
+                                id: soundBar
+                                scale: 1.25
+                                rect.color: "transparent"
+                                rect.radius: 0
+
+                                Slider {
+                                    id: sound_progressSlider
+                                    Layout.fillWidth: true
+                                    height: soundBar.height
+
+                                    from: 0
+                                    to: 1
+                                    stepSize: .01
+
+                                    // Local control state
+                                    // property bool isUserDragging: false
+
+                                    // Show current position unless the user is dragging
+                                    value: Pipewire.defaultAudioSink?.audio.volume  || 0
+
+                                    PwObjectTracker {
+                                        objects: [ Pipewire.defaultAudioSink ]
+                                    }
+
+                                    Connections {
+                                        target: Pipewire.defaultAudioSink?.audio
+                                    }
 
 
-                                Text {
-                                    text: "󰕾"
-                                    color: parent.txtclr
-                                    anchors.centerIn: parent
-                                    font.pixelSize: 12
+                                
+                                    onValueChanged: {
+                                        Pipewire.defaultAudioSink.audio.volume = value
+                                        // print("Volume set to: " + Pipewire.defaultAudioSink.audio.volume);
+                                    }
+
+                                    Rectangle{
+                                        id: sound_sliderIcon
+                                        implicitWidth: soundBar.height
+                                        implicitHeight: implicitWidth
+                                        width: implicitWidth
+                                        radius: 24
+                                        height: implicitHeight
+                                        Text {
+                                            text: ""
+                                            color: Services.Colors.on_primary
+                                            anchors.centerIn: parent
+                                            font.pixelSize: 12
+                                        }
+
+                                        color: Services.Colors.primary
+                                    }
+
+                                    background: Rectangle {
+                                            x: sound_progressSlider.leftPadding
+                                            y: sound_progressSlider.topPadding + sound_progressSlider.availableHeight / 2 - height / 2
+                                            implicitWidth: soundBar.width - anchors.leftMargin
+                                            implicitHeight: soundBar.height
+                                            width: sound_progressSlider.availableWidth - sound_sliderIcon.width - sound_progressSlider.leftPadding
+                                            height: implicitHeight
+                                            radius: 24
+                                            color: Services.Colors.primary_container
+
+                                            anchors.left: sound_sliderIcon.right
+                                            anchors.leftMargin: 8
+
+
+                                            Rectangle {
+                                                width: sound_progressSlider.visualPosition * parent.width
+                                                height: parent.height
+                                                color: Services.Colors.primary
+                                                radius: 24
+                                                border.color: "transparent"
+
+                                                Behavior on width {
+                                                    NumberAnimation {
+                                                        duration: 150
+                                                        easing.type: Easing.InOutQuad
+                                                    }
+                                                }
+                                            }
+                                            
+                                        }
+
+                                    handle: Rectangle {
+                                        x: sound_progressSlider.leftPadding + sound_progressSlider.visualPosition * (sound_progressSlider.availableWidth - width)
+                                        y: sound_progressSlider.topPadding + sound_progressSlider.availableHeight / 2 - height / 2
+
+                                        radius: 13
+                                        color: sound_progressSlider.pressed ? "#f0f0f0" : "#f6f6f6"
+                                        border.color: "#bdbebf"
+                                    }
                                 }
                             }
                         }
+
                         RowLayout {
                             width: parent.width
                             spacing: 8
 
                             // Brightness Bar
                             DashItem {
+                                id: brightnessBar
                                 scale: 1
+                                rect.color: "transparent"
+                                rect.radius: 0
 
+                                Slider {
+                                    id: progressSlider
+                                    Layout.fillWidth: true
+                                    height: 16
+
+                                    from: 0
+                                    to: 100
+                                    stepSize: 1
+
+                                    // Local control state
+                                    property bool isUserDragging: false
+
+                                    // Show current position unless the user is dragging
+                                    value: 50
+
+                                    onPressedChanged: {
+                                        if (!pressed && isUserDragging) {
+
+                                        }
+                                        isUserDragging = pressed;
+                                    }
+
+                                    background: Rectangle {
+                                            x: progressSlider.leftPadding
+                                            y: progressSlider.topPadding + progressSlider.availableHeight / 2 - height / 2
+                                            implicitWidth: brightnessBar.width
+                                            implicitHeight: 16
+                                            width: progressSlider.availableWidth
+                                            height: implicitHeight
+                                            radius: 24
+                                            color: Services.Colors.primary_container
+
+
+                                            Rectangle {
+                                                width: progressSlider.visualPosition * parent.width
+                                                height: parent.height
+                                                color: Services.Colors.primary
+                                                radius: 24
+                                                border.color: "transparent"
+
+                                                Behavior on width {
+                                                    NumberAnimation {
+                                                        duration: 150
+                                                        easing.type: Easing.InOutQuad
+                                                    }
+                                                }
+                                            }
+                                            
+                                        }
+
+                                    handle: Rectangle {
+                                        x: progressSlider.leftPadding + progressSlider.visualPosition * (progressSlider.availableWidth - width)
+                                        y: progressSlider.topPadding + progressSlider.availableHeight / 2 - height / 2
+
+                                        radius: 13
+                                        color: progressSlider.pressed ? "#f0f0f0" : "#f6f6f6"
+                                        border.color: "#bdbebf"
+                                    }
+                                }
 
                                 Text {
-                                    text: "brightness"
-                                    color: "white"
-                                    anchors.centerIn: parent
+                                    text: ""
+                                    color: Services.Colors.on_primary
+                                    anchors.left: parent.left
+                                    anchors.leftMargin: 8
                                     font.pixelSize: 12
                                 }
                             }
@@ -156,7 +318,6 @@ Scope {
 
                             DashBtn {
                                 // BLUETOOTH
-
                                 Text {
                                     text: "󰂯"
                                     color: parent.txtclr
@@ -175,7 +336,7 @@ Scope {
                                 // color: Services.Colors.surface_variant
                                 
                                 Text {
-                                    text: ""
+                                    text: "󰦚"
                                     color: parent.txtclr
                                     anchors.centerIn: parent
                                     font.pixelSize: 20
@@ -239,46 +400,47 @@ Scope {
 
                             DashBtn {
                                 radius: 10
+                                disabled: Services.Colors.primary
 
                                 Text {
                                     text: "󰤄"
-                                    color: "black"
+                                    color: Services.Colors.on_primary
                                     anchors.centerIn: parent
                                     font.pixelSize: 30
                                 }
                             }
 
                             DashBtn {
-                                // color: Services.Colors.tertiary
+                                disabled: Services.Colors.primary
                                 radius: 10
 
                                 Text {
                                     text: "\udb81\uddfd"
-                                    color: "Black"
+                                    color: Services.Colors.on_primary
                                     anchors.centerIn: parent
                                     font.pixelSize: 30
                                 }
                             }
 
                             DashBtn {
-                                // color: Services.Colors.tertiary
+                                disabled: Services.Colors.primary
                                 radius: 10
 
                                 Text {
                                     text: "\uead2"
-                                    color: "white"
+                                    color: Services.Colors.on_primary
                                     anchors.centerIn: parent
                                     font.pixelSize: 30
                                 }
                             }
 
                             DashBtn{
-                                disabled: Services.Colors.on_error
+                                disabled: Services.Colors.primary
                                 radius: 10
 
                                 Text {
                                     text: "\u23fb"
-                                    color: "white"
+                                    color: Services.Colors.on_primary
                                     anchors.centerIn: parent
                                     font.pixelSize: 30
                                 }
