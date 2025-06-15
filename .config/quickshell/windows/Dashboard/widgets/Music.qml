@@ -8,11 +8,8 @@ import Quickshell.Widgets
 
 import Quickshell.Services.Mpris
 
-import "root:/windows/Dashboard/" as Dashboard
+import "root:/windows/Dashboard/Screens/Dashboard/" as Dashboard
 import "root:/Services/" as Services
-
-
-
 
 Dashboard.DashItem { // just a fancy wrapper for an item and a few set properties
     width: parent.width  
@@ -267,5 +264,13 @@ Dashboard.DashItem { // just a fancy wrapper for an item and a few set propertie
                 }
             }
         }
+
+        // RowLayout {
+        //     Layout.fillWidth: true
+        //     Layout.alignment: Qt.AlignHCenter
+
+        //     ScrollIndicator.horizontal: ScrollIndicator { }
+        //     // ScrollIndicator.color: Services.Colors.primary
+        // }
     }
 }
