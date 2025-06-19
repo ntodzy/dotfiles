@@ -6,11 +6,10 @@ import Quickshell.Services.Pipewire
 import Quickshell.Widgets
 import QtQuick.Effects
 
-import "./DashItem.qml"
-import "./DashBtn.qml"
+import "DashItem.qml"
+import "DashBtn.qml"
 import "root:/windows/Dashboard/widgets" as Widgets
 import "root:/Services" as Services
-import "root:/Data/" as Data
 
 import "root:/windows/Dashboard/Screens/Dashboard/" as Dashboard
 import "root:/windows/Dashboard" as DashboardRoot
@@ -36,7 +35,6 @@ Scope {
             color: "transparent"
             screen: modelData
             implicitWidth: sz_collapsed // Collapsed width
-
 
             Rectangle {
                 id: dashHint

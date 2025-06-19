@@ -11,8 +11,6 @@ import "root:/windows/Dashboard/Screens/Dashboard/DashBtn.qml"
 // import "root:/windows/Dashboard/Screens/Dashboard/widgets/" as Widgets
 import "root:/windows/Dashboard/widgets" as Widgets
 import "root:/Services" as Services
-import "root:/Data/" as Data
-
 
 Rectangle {
     implicitHeight: parent.height
@@ -364,99 +362,8 @@ Rectangle {
                 width: parent.width
                 spacing: 8
 
-                // TODO WEATHER PILL
-                Rectangle {
-                    Layout.fillWidth: true
-                    height: 64
-                    color: Services.Colors.primary_container
-                    radius: 8
-                    
-                    // border {
-                    //     color: Services.Colors.outline
-                    //     width: 2
-                    // }
-
-                    RowLayout {
-                        height: parent.height
-                        spacing: 8
-
-                        Text {
-                            Layout.fillWidth: true
-                            text: "󰖨"
-                            color: "white"
-                            Layout.alignment: Qt.AlignVCenter
-                            Layout.leftMargin: 8
-                            font.pixelSize: 48
-                        }
-
-                        ColumnLayout {
-                            Layout.fillWidth: true
-                            Text {
-                                text: "25° F"
-                                color: Services.Colors.on_primary_container
-                                font.pixelSize: 16
-                            }
-
-                            Text {
-                                text: "Madison, WI"
-                                color: Services.Colors.on_primary_container
-                                font.pixelSize: 14
-                            }
-                        }
-
-                        ColumnLayout {
-                            Layout.fillWidth: true
-                            Layout.alignment: Qt.AlignRight
-
-                            Rectangle {
-                                width: 105
-                                height: 12
-                                color: "transparent"
-                                Layout.fillWidth: true
-
-                                Text {
-                                    text: "HH:MM "
-                                    width: parent.width
-                                    color: Services.Colors.on_primary_container
-                                    horizontalAlignment: Text.AlignRight
-                                    // font.pixelSize: 8
-                                }
-                            }
-                            
-
-                            Rectangle {
-                                width: 105
-                                height: 12
-                                color: "transparent"
-                                Layout.fillWidth: true
-
-                                Text {
-                                    text: "HH:MM "
-                                    width: parent.width
-                                    color: Services.Colors.on_primary_container
-                                    horizontalAlignment: Text.AlignRight
-                                    // font.pixelSize: 8
-                                }
-                            }
-
-                            Rectangle {
-                                width: 105
-                                height: 12
-                                color: "transparent"
-                                Layout.fillWidth: true
-
-                                Text {
-                                    text: "HH:MM "
-                                    width: parent.width
-                                    color: Services.Colors.on_primary_container
-                                    horizontalAlignment: Text.AlignRight
-                                    // font.pixelSize: 8
-                                }
-                            }
-                            
-                            
-                        }
-                    }
+                Widgets.Weather {
+                    id: weatherWidget
                 }
             }
 
