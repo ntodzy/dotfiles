@@ -25,7 +25,7 @@ Scope {
 
             color: "transparent"
             focusable: false;
-            implicitHeight: 30
+            implicitHeight: 32
             layer: WlrLayer.Top
             screen: modelData
 
@@ -42,7 +42,7 @@ Scope {
             WrapperRectangle {
                 id: notch
                 width: 600
-                height: 30
+                height: 32
                 bottomLeftRadius: 25
                 bottomRightRadius: 18
                 anchors.horizontalCenter: parent.horizontalCenter

@@ -94,7 +94,7 @@ Dashboard.DashItem { // just a fancy wrapper for an item and a few set propertie
             
             Text {
                 Layout.fillWidth: true
-                text: Mpris.players.values[idx] ? Mpris.players.values[idx].trackTitle.slice(0,40) : "No Music Playing"
+                text: Mpris.players.values[idx] ? Mpris.players.values[idx].trackTitle.slice(0,36) : "No Music Playing"
                 color: "white"
                 font.pixelSize: 12 * scale
                 Layout.alignment: Qt.AlignLeft

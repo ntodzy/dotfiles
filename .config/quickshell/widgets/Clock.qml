@@ -6,6 +6,7 @@ import Quickshell.Widgets
 import QtQuick.Layouts
 
 import "root:/data/" as Data
+import "root:/Services/" as Services
 
 Item {
     anchors {
@@ -30,7 +31,7 @@ Item {
     Text {
         id: timeText
         anchors.centerIn: parent
-        color: "white"
+        color: Services.Colors.on_surface
         font.bold: true
         font.pixelSize: 12
         text: Qt.formatDateTime(clock.date, "MMM d - HH:mm") // ap:=am/pm,

@@ -20,8 +20,8 @@ DashItem {
 
     property int radius: 24
 
-    property string bgclr: disabled
-    property string txtclr: on_disabled
+    property string bgclr: active ? enabled : disabled
+    property string txtclr: active ? on_enabled : on_disabled
     Behavior on bgclr {
         ColorAnimation {
             duration: 150
@@ -55,23 +55,11 @@ DashItem {
         
 
         onClicked: (event) => {
-            active = !active
-
             if (event.button === Qt.RightButton) {
                   return // ignore
             }
-            
 
-            if (active) {
-                
-                bgclr = root.enabled
-                txtclr = root.on_enabled
-            }
-
-            else {
-                bgclr = root.disabled
-                txtclr = root.on_disabled
-            }
+            active = !active
         }
     }
 

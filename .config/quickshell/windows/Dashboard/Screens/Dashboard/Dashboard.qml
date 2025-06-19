@@ -15,7 +15,8 @@ import "root:/Data/" as Data
 
 
 Rectangle {
-    anchors.fill: parent
+    implicitHeight: parent.height
+    implicitWidth: 288
     color: Services.Colors.surface_container
 
     border {
@@ -26,13 +27,6 @@ Rectangle {
 
     bottomRightRadius: 18
     topRightRadius: 18
-
-    anchors {
-        left: parent.left
-        bottom: parent.bottom
-        top: parent.top
-        
-    }
 
     Item {
         anchors {
@@ -288,23 +282,43 @@ Rectangle {
                 width: parent.width
                 spacing: 8
 
+                // WIFI
                 DashBtn {
+                    active: Services.Network.enabled // is boolean field
 
                     Text {
-                        text: "󰖩"
+                        text: "󰖩 " + Services.Network.ssid
                         color: parent.txtclr
                         anchors.centerIn: parent
                         font.pixelSize: 20
                     }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            Services.Network.toggle()
+                            // print("Network toggled, current status: " + Services.Network.enabled);
+                        }
+                    }
                 }
 
+                // BLUETOOTH
                 DashBtn {
-                    // BLUETOOTH
+                    active: Services.Bluetooth.status != 0  // 0 off, 1 on, 2 discovering
+
                     Text {
-                        text: "󰂯"
+                        text: "󰂯 " + Services.Bluetooth.connected
                         color: parent.txtclr
                         anchors.centerIn: parent
                         font.pixelSize: 20
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            Services.Bluetooth.toggle()
+                            // print("Bluetooth toggled, current status: " + Services.Bluetooth.status);
+                        }
                     }
                 }
             }
@@ -334,6 +348,16 @@ Rectangle {
                         font.pixelSize: 20
                     }
                 }
+
+                DashBtn {
+                    // Screen Record
+                    Text {
+                        text: ""
+                        color: parent.txtclr
+                        anchors.centerIn: parent
+                        font.pixelSize: 20
+                    }
+                }
             }
 
             RowLayout {
@@ -344,13 +368,94 @@ Rectangle {
                 Rectangle {
                     Layout.fillWidth: true
                     height: 64
-                    color: Services.Colors.tertiary
+                    color: Services.Colors.primary_container
+                    radius: 8
+                    
+                    // border {
+                    //     color: Services.Colors.outline
+                    //     width: 2
+                    // }
 
-                    Text {
-                        text: "󰖨"
-                        color: "white"
-                        anchors.centerIn: parent
-                        font.pixelSize: 30
+                    RowLayout {
+                        height: parent.height
+                        spacing: 8
+
+                        Text {
+                            Layout.fillWidth: true
+                            text: "󰖨"
+                            color: "white"
+                            Layout.alignment: Qt.AlignVCenter
+                            Layout.leftMargin: 8
+                            font.pixelSize: 48
+                        }
+
+                        ColumnLayout {
+                            Layout.fillWidth: true
+                            Text {
+                                text: "25° F"
+                                color: Services.Colors.on_primary_container
+                                font.pixelSize: 16
+                            }
+
+                            Text {
+                                text: "Madison, WI"
+                                color: Services.Colors.on_primary_container
+                                font.pixelSize: 14
+                            }
+                        }
+
+                        ColumnLayout {
+                            Layout.fillWidth: true
+                            Layout.alignment: Qt.AlignRight
+
+                            Rectangle {
+                                width: 105
+                                height: 12
+                                color: "transparent"
+                                Layout.fillWidth: true
+
+                                Text {
+                                    text: "HH:MM "
+                                    width: parent.width
+                                    color: Services.Colors.on_primary_container
+                                    horizontalAlignment: Text.AlignRight
+                                    // font.pixelSize: 8
+                                }
+                            }
+                            
+
+                            Rectangle {
+                                width: 105
+                                height: 12
+                                color: "transparent"
+                                Layout.fillWidth: true
+
+                                Text {
+                                    text: "HH:MM "
+                                    width: parent.width
+                                    color: Services.Colors.on_primary_container
+                                    horizontalAlignment: Text.AlignRight
+                                    // font.pixelSize: 8
+                                }
+                            }
+
+                            Rectangle {
+                                width: 105
+                                height: 12
+                                color: "transparent"
+                                Layout.fillWidth: true
+
+                                Text {
+                                    text: "HH:MM "
+                                    width: parent.width
+                                    color: Services.Colors.on_primary_container
+                                    horizontalAlignment: Text.AlignRight
+                                    // font.pixelSize: 8
+                                }
+                            }
+                            
+                            
+                        }
                     }
                 }
             }
@@ -368,8 +473,8 @@ Rectangle {
                     color: Services.Colors.primary_container
                     radius: 8
 
-                    border.color: Services.Colors.outline
-                    border.width: 2
+                    // border.color: Services.Colors.outline
+                    // border.width: 2
 
                     //
                     property int month: new Date().getMonth()
@@ -383,6 +488,17 @@ Rectangle {
                         anchors.topMargin: 8
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.pixelSize: 16
+
+                        Rectangle {
+                            width: parent.width
+                            height: 2
+                            color: Services.Colors.outline
+                            anchors {
+                                top: parent.bottom
+                                horizontalCenter: parent.horizontalCenter
+                                topMargin: 0
+                            }
+                        }
 
                         id: monthYearText
                     }
@@ -426,6 +542,7 @@ Rectangle {
                                 color: model.date.getMonth() === calendarContainer.month && model.date.getFullYear() === calendarContainer.year
                                     ? Services.Colors.tertiary
                                     : Services.Colors.on_surface_variant
+                                
                             }
                         }
 
@@ -523,10 +640,14 @@ Rectangle {
             }
 
             RowLayout {
+                width: parent.width
+                height: parent.height - 50 // Reserve space for the header
+
                 Rectangle {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    height: 50
+                    width: 1
+                    height: 1
                     
                     color: "transparent"
 
@@ -550,6 +671,8 @@ Rectangle {
             }
         
             RowLayout {
+                width: parent.width
+
                 Rectangle {
                     Layout.fillWidth: true
                     height: 50

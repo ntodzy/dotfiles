@@ -46,7 +46,7 @@ Item {
     }
 
     WrapperRectangle {
-        color: Services.Colors.secondary
+        color: Services.Colors.surface_variant
         radius: 6    
         id: soundPillBackground
 
