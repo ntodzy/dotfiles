@@ -34,7 +34,7 @@ Item {
             print("SoundPill: Muted changed to", Pipewire.defaultAudioSink?.audio.muted);
 
             // update the pill background color based on mute status
-            soundPillBackground.color = Pipewire.defaultAudioSink?.audio.muted ? Services.Colors.error_container : Services.Colors.secondary
+            soundPillBackground.color = Pipewire.defaultAudioSink?.audio.muted ? Services.Colors.error_container : Services.Colors.primary;
             soundPill.muted = Pipewire.defaultAudioSink?.audio.muted;
 
         }
@@ -46,7 +46,7 @@ Item {
     }
 
     WrapperRectangle {
-        color: Services.Colors.surface_variant
+        color: Services.Colors.primary
         radius: 6    
         id: soundPillBackground
 
@@ -56,15 +56,15 @@ Item {
         RowLayout {
             spacing: 0
 
-            Text {
-                text: ` ${Math.floor(Pipewire.defaultAudioSink?.audio.volume * 100)} `
-                color: soundPill.muted ? "white" : "black"
-            }
+            // Text {
+            //     text: ` ${Math.floor(Pipewire.defaultAudioSink?.audio.volume * 100)} `
+            //     color: soundPill.muted ? "white" : "black"
+            // }
             
             WrapperRectangle {
-                color: soundPill.muted ? Services.Colors.on_error : Services.Colors.secondary
+                color: soundPill.muted ? Services.Colors.on_error : Services.Colors.primary_container
                 id: soundPillIcon
-                radius: 20
+                radius: 5
 
                 resizeChild: true
                 margin: 2

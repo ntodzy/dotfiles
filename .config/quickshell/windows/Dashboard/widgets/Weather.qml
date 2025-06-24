@@ -10,8 +10,8 @@ import "root:/Services/" as Services
 Rectangle {
     color: Services.Colors.primary_container
     radius: 8
-    border.width: 1
-    border.color: Services.Colors.outline
+    // border.width: 1
+    // border.color: Services.Colors.outline
     Layout.fillWidth: true
     height: 64
 
@@ -31,8 +31,8 @@ Rectangle {
                 Text {
                     Layout.fillWidth: true
                     Layout.preferredWidth: 48
-                    text: "󰖨"
-                    color: "white"
+                    text: Services.Weather.icon
+                    color: Services.Colors.on_primary_container
                     Layout.alignment: Qt.AlignVCenter
                     Layout.leftMargin: 8
                     font.pixelSize: 48
@@ -52,7 +52,7 @@ Rectangle {
                             text: `(${Services.Weather.feelslike_f}°F)`
                             color: Services.Colors.on_primary_container
                             font.pixelSize: 10
-                            Layout.alignment: Qt.AlignVTop
+                            // Layout.alignment: Qt.AlignVTop
                         }
                     }
 

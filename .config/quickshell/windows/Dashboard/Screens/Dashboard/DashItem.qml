@@ -17,8 +17,6 @@ Item {
     height: 16*scale
     clip: true
 
-
-
     WrapperRectangle {
         id: rect
         anchors {

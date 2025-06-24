@@ -3,9 +3,12 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 
+import "root:/Services/" as Services
+
 Singleton {
     id: weatherman
 
+    property string icon: ""
     property string location
     property string temperature_f
     property string dewpoint_f
@@ -64,6 +67,9 @@ Singleton {
                 weatherman.wind_speed_mph = json.current_condition[0].windspeedMiles;
                 weatherman.wind_dir = json.current_condition[0].winddir16Point;
                 weatherman.description = json.current_condition[0].weatherDesc[0].value;
+
+                // Calculate Icon
+                weatherman.icon = Services.Icon.getWeatherIcon(json.current_condition[0].weatherCode)
             }
         }
     }

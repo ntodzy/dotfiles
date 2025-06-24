@@ -36,7 +36,7 @@ Item {
         resizeChild: true
 
         RowLayout {
-            spacing: 0
+            spacing: 4
 
             Repeater {
                 id: items

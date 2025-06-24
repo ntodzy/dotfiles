@@ -45,10 +45,10 @@ Item {
                 color: {
                      
                     if (Data.Network.bt_conn > 0 ) {
-                        return "blue"
+                        return Services.Colors.primary
                     }
                     else if (Data.Network.bt_status == 0) {
-                        return "red"
+                        return "transparent"
                     }
                     else if (Data.Network.bt_status == 1) {
                         return "white"
@@ -71,7 +71,7 @@ Item {
                     text: "󰂯" // Bluetooth icon
                     color: {
                         if (Data.Network.bt_conn > 0) {
-                            return "white"
+                            return "black"
                         } else {
                             return "black"
                         }

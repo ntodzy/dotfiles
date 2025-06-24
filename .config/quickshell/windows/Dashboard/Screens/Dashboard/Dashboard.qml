@@ -4,6 +4,7 @@ import QtQuick.Controls
 import Quickshell
 import Quickshell.Services.Pipewire
 import Quickshell.Widgets
+
 import QtQuick.Effects
 
 import "root:/windows/Dashboard/Screens/Dashboard/DashItem.qml"
@@ -64,22 +65,56 @@ Rectangle {
                 ColumnLayout {
                     Layout.fillWidth: true
                     Text {
-                        text: "John Doe"
+                        text: `${Services.System.username}@${Services.System.hostname}`
                         color: "white"
                     }
 
                     Text {
-                        text: "Uptime: 5h 23m"
+                        text: `Up: ${Services.System.uptime}`
                         color: "lightgrey"
                     }
                 }
 
                 // Battery will go here on mobile..
                 Rectangle {
-                    width: 48
-                    height: 48
-                    color: "lightgrey"
+                    color: "transparent"
+
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
                     Layout.alignment: Qt.AlignRight
+
+                    ColumnLayout {
+                        width: parent.width
+                        Layout.alignment: Qt.AlignRight
+
+                        Text {
+                            height: 16
+                            Layout.fillWidth: true
+                            text: "󰂃 100%"
+                            color: "white"
+                            font.pixelSize: 12
+                            horizontalAlignment: Text.AlignRight
+                        }
+
+                        Text {
+                            height: 16
+                            Layout.fillWidth: true
+                            text: "55:55:55"
+                            color: "lightgrey"
+                            font.pixelSize: 10
+                            horizontalAlignment: Text.AlignRight
+                        }
+
+
+                        Text {
+                            height: 16
+                            Layout.fillWidth: true
+                            text: "Desktop"
+                            color: "lightgrey"
+                            font.pixelSize: 10
+                            horizontalAlignment: Text.AlignRight
+                        }
+                    }
                 }
 
 

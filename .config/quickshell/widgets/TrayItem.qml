@@ -7,13 +7,15 @@ import QtQuick
 
 import "root:/widgets/"
 
+import "root:/Services/" as Services
+
 MouseArea {
     id: root
     required property SystemTrayItem modelData
     property bool isActive: false
 
-    implicitWidth: 20
-    implicitHeight: 20
+    implicitWidth: 16
+    implicitHeight: 16
 
     acceptedButtons: Qt.LeftButton | Qt.RightButton
 
@@ -68,6 +70,13 @@ MouseArea {
         id: icon
         asynchronous: true
         anchors.fill: parent
-        source: `${iconInterface(modelData.id)}`
+        source: {
+            let icon = root.modelData.icon;
+            if (icon.includes("?path=")) {
+                const [name, path] = icon.split("?path=");
+                icon = `file://${path}/${name.slice(name.lastIndexOf("/") + 1)}`;
+            }
+            return icon;
+        }
     }
 }

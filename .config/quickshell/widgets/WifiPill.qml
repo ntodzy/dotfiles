@@ -18,7 +18,7 @@ Item {
     }
 
     WrapperRectangle {
-        color: Services.Colors.secondary
+        color: Services.Colors.primary
         radius: 6
 
         id: networkPillBackground
@@ -45,7 +45,7 @@ Item {
 
 
             WrapperRectangle {
-                color: Services.Colors.secondary
+                color: Services.Colors.primary
                 id: soundPillIcon
                 radius: 6
                 resizeChild: true
@@ -53,7 +53,7 @@ Item {
 
                 Text {
                     text: "󰤨 "
-                    color:"black"
+                    color: Services.Colors.on_secondary
                    
                     Layout.fillHeight: true
                     horizontalAlignment: Text.AlignHCenter
