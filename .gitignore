@@ -6,3 +6,5 @@
 /.config/spotify
 /.config/discord
 /.config/Electron
+
+./pulse

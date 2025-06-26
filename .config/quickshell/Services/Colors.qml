@@ -5,64 +5,113 @@ import Quickshell
 import Quickshell.Io
 import QtQuick
 
-
-
 QtObject {
-    function rgb(r, g, b) {
+    function rgba(r, g, b, a) {
         return Qt.rgba(r / 255, g / 255, b / 255, 1);
     }
 
     id: mat3
-
-    property color primary: rgb(170, 199, 255)
-    property color surface_tint: rgb(170, 199, 255)
-    property color on_primary: rgb(10, 48, 95);
-    property color primary_container: rgb(40, 71, 119);
-    property color on_primary_container: rgb(214, 227, 255);
-    property color secondary: rgb(190, 198, 220);
-    property color on_secondary: rgb(40, 49, 65);
-    property color secondary_container: rgb(62, 71, 89);
-    property color on_secondary_container: rgb(218, 226, 249);
-    property color tertiary: rgb(221, 188, 224);
-    property color on_tertiary: rgb(63, 40, 68);
-    property color tertiary_container: rgb(87, 62, 92);
-    property color on_tertiary_container: rgb(250, 216, 253);
-    property color error: rgb(25, 180, 171);
-    property color on_error: rgb(105, 0, 5);
-    property color error_container: rgb(147, 0, 10);
-    property color on_error_container: rgb(255, 218, 214);
-    property color background: rgb(17, 19, 24);
-    property color on_background: rgb(226, 226, 233);
-    property color surface: rgb(17, 19, 24);
-    property color on_surface: rgb(226, 226, 233);
-    property color surface_variant: rgb(68, 71, 78);
-    property color on_surface_variant: rgb(196, 198, 208);
-    property color outline: rgb(142, 144,153);
-    property color outline_variant: rgb(68, 71, 78);
-    property color shadow: rgb(0, 0, 0);
-    property color scrim: rgb(0, 0, 0);
-    property color inverse_surface: rgb(226, 226, 233);
-    property color inverse_on_surface: rgb(46, 48, 54);
-    property color inverse_primary: rgb(65, 95, 145);
-    property color primary_fixed: rgb(214, 227, 255);
-    property color on_primary_fixed: rgb(0, 27, 62);
-    property color primary_fixed_dim: rgb(170, 199 ,255);
-    property color on_primary_fixed_variant: rgb(40, 71, 119);
-    property color secondary_fixed: rgb(218, 226, 249);
-    property color on_secondary_fixed: rgb(19, 28, 43);
-    property color secondary_fixed_dim: rgb(190, 198, 220);
-    property color on_secondary_fixed_variant: rgb(62, 71, 89);
-    property color tertiary_fixed: rgb(250, 216, 253);
-    property color on_tertiary_fixed: rgb(40, 19, 46);
-    property color tertiary_fixed_dim: rgb(221, 188, 224);
-    property color on_tertiary_fixed_variant: rgb(87, 62, 92);
-    property color surface_dim: rgb(17, 19, 24);
-    property color surface_bright: rgb(55, 57, 62);
-    property color surface_container_lowest: rgb(12, 14, 19);
-    property color surface_container_low: rgb(25, 28, 32);
-    property color surface_container: rgb(29, 32, 36);
-    property color surface_container_high: rgb(40, 42, 47);
-    property color surface_container_highest: rgb(51, 53, 58);
+    
+    property color background: rgba(17, 20, 24, 1.0)
+    
+    property color error: rgba(255, 180, 171, 1.0)
+    
+    property color error_container: rgba(147, 0, 10, 1.0)
+    
+    property color inverse_on_surface: rgba(46, 49, 53, 1.0)
+    
+    property color inverse_primary: rgba(54, 97, 142, 1.0)
+    
+    property color inverse_surface: rgba(225, 226, 232, 1.0)
+    
+    property color on_background: rgba(225, 226, 232, 1.0)
+    
+    property color on_error: rgba(105, 0, 5, 1.0)
+    
+    property color on_error_container: rgba(255, 218, 214, 1.0)
+    
+    property color on_primary: rgba(0, 50, 88, 1.0)
+    
+    property color on_primary_container: rgba(209, 228, 255, 1.0)
+    
+    property color on_primary_fixed: rgba(0, 29, 54, 1.0)
+    
+    property color on_primary_fixed_variant: rgba(25, 73, 117, 1.0)
+    
+    property color on_secondary: rgba(37, 49, 64, 1.0)
+    
+    property color on_secondary_container: rgba(214, 227, 247, 1.0)
+    
+    property color on_secondary_fixed: rgba(16, 28, 43, 1.0)
+    
+    property color on_secondary_fixed_variant: rgba(59, 72, 88, 1.0)
+    
+    property color on_surface: rgba(225, 226, 232, 1.0)
+    
+    property color on_surface_variant: rgba(195, 199, 207, 1.0)
+    
+    property color on_tertiary: rgba(59, 41, 72, 1.0)
+    
+    property color on_tertiary_container: rgba(242, 218, 255, 1.0)
+    
+    property color on_tertiary_fixed: rgba(37, 20, 49, 1.0)
+    
+    property color on_tertiary_fixed_variant: rgba(82, 63, 95, 1.0)
+    
+    property color outline: rgba(141, 145, 153, 1.0)
+    
+    property color outline_variant: rgba(66, 71, 78, 1.0)
+    
+    property color primary: rgba(160, 202, 253, 1.0)
+    
+    property color primary_container: rgba(25, 73, 117, 1.0)
+    
+    property color primary_fixed: rgba(209, 228, 255, 1.0)
+    
+    property color primary_fixed_dim: rgba(160, 202, 253, 1.0)
+    
+    property color scrim: rgba(0, 0, 0, 1.0)
+    
+    property color secondary: rgba(187, 199, 219, 1.0)
+    
+    property color secondary_container: rgba(59, 72, 88, 1.0)
+    
+    property color secondary_fixed: rgba(214, 227, 247, 1.0)
+    
+    property color secondary_fixed_dim: rgba(187, 199, 219, 1.0)
+    
+    property color shadow: rgba(0, 0, 0, 1.0)
+    
+    property color source_color: rgba(87, 131, 180, 1.0)
+    
+    property color surface: rgba(17, 20, 24, 1.0)
+    
+    property color surface_bright: rgba(54, 57, 62, 1.0)
+    
+    property color surface_container: rgba(29, 32, 36, 1.0)
+    
+    property color surface_container_high: rgba(39, 42, 47, 1.0)
+    
+    property color surface_container_highest: rgba(50, 53, 58, 1.0)
+    
+    property color surface_container_low: rgba(25, 28, 32, 1.0)
+    
+    property color surface_container_lowest: rgba(11, 14, 19, 1.0)
+    
+    property color surface_dim: rgba(17, 20, 24, 1.0)
+    
+    property color surface_tint: rgba(160, 202, 253, 1.0)
+    
+    property color surface_variant: rgba(66, 71, 78, 1.0)
+    
+    property color tertiary: rgba(214, 190, 228, 1.0)
+    
+    property color tertiary_container: rgba(82, 63, 95, 1.0)
+    
+    property color tertiary_fixed: rgba(242, 218, 255, 1.0)
+    
+    property color tertiary_fixed_dim: rgba(214, 190, 228, 1.0)
+    
 
     // Material You Colors, Taken from Caelestia Dots
     property color rosewater: "#B8C4FF"
