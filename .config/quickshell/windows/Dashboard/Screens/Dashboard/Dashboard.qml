@@ -4,12 +4,13 @@ import QtQuick.Controls
 import Quickshell
 import Quickshell.Services.Pipewire
 import Quickshell.Widgets
+import Quickshell.Services.UPower
+import Quickshell.Io
 
 import QtQuick.Effects
 
 import "root:/windows/Dashboard/Screens/Dashboard/DashItem.qml"
 import "root:/windows/Dashboard/Screens/Dashboard/DashBtn.qml" 
-// import "root:/windows/Dashboard/Screens/Dashboard/widgets/" as Widgets
 import "root:/windows/Dashboard/widgets" as Widgets
 import "root:/Services" as Services
 
@@ -90,26 +91,17 @@ Rectangle {
                         Text {
                             height: 16
                             Layout.fillWidth: true
-                            text: "󰂃 100%"
+                            text: `${Services.Icon.batteryIcons[UPower.displayDevice.iconName]} ${Math.floor(UPower.displayDevice.percentage * 100)}%`
                             color: "white"
                             font.pixelSize: 12
                             horizontalAlignment: Text.AlignRight
+
                         }
 
                         Text {
                             height: 16
                             Layout.fillWidth: true
-                            text: "55:55:55"
-                            color: "lightgrey"
-                            font.pixelSize: 10
-                            horizontalAlignment: Text.AlignRight
-                        }
-
-
-                        Text {
-                            height: 16
-                            Layout.fillWidth: true
-                            text: "Desktop"
+                            text: UPower.onBattery ? Math.floor(UPower.displayDevice.timeToEmpty / 60) + "m" : Math.floor(UPower.displayDevice.timeToFull / 60) + "m"
                             color: "lightgrey"
                             font.pixelSize: 10
                             horizontalAlignment: Text.AlignRight
@@ -255,11 +247,11 @@ Rectangle {
                         property bool isUserDragging: false
 
                         // Show current position unless the user is dragging
-                        value: 50
+                        value: Services.Brightness.percentage || 75
 
                         onPressedChanged: {
                             if (!pressed && isUserDragging) {
-
+                                Services.Brightness.setBrightness(value);
                             }
                             isUserDragging = pressed;
                         }

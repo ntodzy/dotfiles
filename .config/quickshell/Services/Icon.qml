@@ -51,6 +51,22 @@ Singleton {
             zorin: ""
         })
 
+    readonly property var batteryIcons: ({
+        "ac-adapter-symbolic": "󰚥",
+        "battery-missing-symbolic": "󰂑",
+        "battery-empty-symbolic": "󰁺",
+        "battery-full-charged-symbolic": "󰂅",
+        "battery-caution-charging-symbolic": "󰢜",
+        "battery-caution-symbolic": "󰂃",
+        "battery-low-charging-symbolic": "󰂇",
+        "battery-low-symbolic": "󰁼",
+        "battery-good-charging-symbolic": "󰂉",
+        "battery-good-symbolic": "󰁿",
+        "battery-full-charging-symbolic": "󰂋",
+        "battery-full-symbolic": "󰂂",
+    })
+
+
     readonly property var weatherIcons: ({
             "113": "", // clear day
             "116": "󰖕", // partly cloudy day

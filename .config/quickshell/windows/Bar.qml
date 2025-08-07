@@ -97,7 +97,6 @@ Scope {
                             layoutDirection: Qt.RightToLeft
                             spacing: 5
                     
-                            Widgets.SoundPill {} 
                             Widgets.WifiPill {}
                             Widgets.BluetoothPill {}
                         }

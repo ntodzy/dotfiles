@@ -44,8 +44,8 @@ Singleton {
             onStreamFinished: {
                 var output = data.toString().trim().split(" ");
                 if (output.length >= 2) {
-                    system.uptime = uptimeToString(output[1].trim());
-                    system.sleeptime = uptimeToString(output[0].trim());
+                    system.uptime = uptimeToString(output[0].trim());
+                    system.sleeptime = uptimeToString(output[1].trim());
                 }
 
                 // print("System Info Updated:");

@@ -1,10 +1,24 @@
-/.config/Code
-/.config/dconf
-/nixos/hardware-configuration.nix
+# 
 /.config/pulse/cookie
+
+# Secure files
 /github.pat
+
+# Applications
 /.config/spotify
 /.config/discord
 /.config/Electron
+/.config/Code
+/.config/dconf
 
+# 1Password
+/.config/vivaldi-snapshot
+/.config/vivaldi
+/.config/microsoft-edge-dev
+/.config/google-chrome
+/.config/google-chrome-beta
+/.config/google-chrome-unstable
+/.config/chromium
+/.config/BraveSoftware
+/.config/1Password
 ./pulse
