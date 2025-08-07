@@ -15,7 +15,13 @@
     nixosConfigurations.todzydesktop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
-      modules = [ ./configuration.nix ];
+      modules = [ ./hosts/desktop/configuration.nix ];
+    };
+
+    nixosConfigurations.todzy-ltp = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [ ./hosts/workltp/configuration.nix ];
     };
   };
 }
