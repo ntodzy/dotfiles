@@ -51,7 +51,7 @@ Item {
                         return "transparent"
                     }
                     else if (Data.Network.bt_status == 1) {
-                        return "white"
+                        return Services.Colors.primary
                     }
                     else if (Data.Network.bt_status == 2) {
                         return "green"

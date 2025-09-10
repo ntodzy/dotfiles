@@ -14,8 +14,12 @@ import "root:/Services" as Services
 import "root:/windows/Dashboard/Screens/Dashboard/" as Dashboard
 import "root:/windows/Dashboard" as DashboardRoot
 
+
+
 Scope {
     id: root
+
+
     Variants {
         model: Quickshell.screens 
         delegate: PanelWindow {
@@ -185,12 +189,15 @@ Scope {
                                 // print("Mouse moved to:" + mouse.x)
                             
                                 dashRow2.visible = false
+
                             }
                         }
                         cursorShape: Qt.PointingHandCursor
 
                         Dashboard.Dashboard {}
-
+                        Dashboard.BTPanel {
+                            visible: Services.ScreenManager.bt_active
+                        }
 
                     }
 

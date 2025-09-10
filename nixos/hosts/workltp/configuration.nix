@@ -16,10 +16,19 @@
   networking = {
     hostName = "todzy-ltp";
     domain = "cs.wisc.edu";
+    nameservers = [ "dns.cs.wisc.edu" "dns4.cs.wisc.edu" ]; 
   };
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      networkmanager-openconnect
+      networkmanager-openvpn
+    ];	
+  };
+
+  services.globalprotect.enable = true;
   programs.ssh.startAgent = true;
 
   
@@ -37,7 +46,10 @@
     # require enabling PolKit integration on some desktop environments (e.g. Plasma).
     polkitPolicyOwners = [ "todzy" ];
   };
-
+  environment.systemPackages = with pkgs; [
+    # System Packages
+    globalprotect-openconnect
+    ];
   # Monitors Hyprland
 
 

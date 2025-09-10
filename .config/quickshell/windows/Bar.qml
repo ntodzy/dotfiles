@@ -5,6 +5,7 @@ import Quickshell
 import Quickshell.Wayland
 import Quickshell.Widgets
 import Quickshell.Io
+import Quickshell.Services.UPower
 
 import "root:/widgets/" as Widgets
 import "root:/Services/" as Services
@@ -96,9 +97,64 @@ Scope {
                             }
                             layoutDirection: Qt.RightToLeft
                             spacing: 5
-                    
-                            Widgets.WifiPill {}
+
+                            Item {
+                                id: batteryPill
+
+                                MarginWrapperManager {
+                                    margin: 0
+                                    resizeChild: true
+                                }
+
+                                WrapperRectangle {
+                                    color: Services.Colors.primary
+                                    radius: 6
+
+                                    id: networkPillBackground
+
+                                    // wrapper
+                                    margin: 0
+                                    resizeChild: true
+
+                                    RowLayout {
+                                        spacing: 0
+                                        HoverHandler {
+                                            id: batteryPillHover
+                                            onHoveredChanged: {
+                                                batteryPct.visible = batteryPillHover.hovered;
+                                            }
+                                        }
+
+
+                                        Text {
+                                            id: batteryPct
+                                            text: ` ${Math.floor(UPower.displayDevice.percentage * 100)}%`
+                                            color: Services.Colors.on_secondary
+                                            visible: false
+                                        }                                     
+
+                                        WrapperRectangle {
+                                            color: Services.Colors.primary
+                                            id: soundPillIcon
+                                            radius: 6
+                                            resizeChild: true
+                                            margin: 2
+
+                                            Text {
+                                                text: Services.Icon.batteryIcons[UPower.displayDevice.iconName]
+                                                color: Services.Colors.on_secondary
+                                            
+                                                Layout.fillHeight: true
+                                                horizontalAlignment: Text.AlignHCenter
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
                             Widgets.BluetoothPill {}
+                            Widgets.WifiPill {}
+                            
                         }
                     }
                 }

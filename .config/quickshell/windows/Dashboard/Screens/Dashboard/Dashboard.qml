@@ -11,13 +11,19 @@ import QtQuick.Effects
 
 import "root:/windows/Dashboard/Screens/Dashboard/DashItem.qml"
 import "root:/windows/Dashboard/Screens/Dashboard/DashBtn.qml" 
+import "root:/windows/Dashboard/Screens/Dashboard/" as Dashboard
+import "root:/windows/Dashboard" as DashboardRoot
+
 import "root:/windows/Dashboard/widgets" as Widgets
 import "root:/Services" as Services
+
+
 
 Rectangle {
     implicitHeight: parent.height
     implicitWidth: 288
     color: Services.Colors.surface_container
+
 
     border {
         width: 1
@@ -91,7 +97,7 @@ Rectangle {
                         Text {
                             height: 16
                             Layout.fillWidth: true
-                            text: `${Services.Icon.batteryIcons[UPower.displayDevice.iconName]} ${Math.floor(UPower.displayDevice.percentage * 100)}%`
+                            text: `${Math.floor(UPower.displayDevice.percentage * 100)}%  ${Services.Icon.batteryIcons[UPower.displayDevice.iconName]}`
                             color: "white"
                             font.pixelSize: 12
                             horizontalAlignment: Text.AlignRight
@@ -101,7 +107,7 @@ Rectangle {
                         Text {
                             height: 16
                             Layout.fillWidth: true
-                            text: UPower.onBattery ? Math.floor(UPower.displayDevice.timeToEmpty / 60) + "m" : Math.floor(UPower.displayDevice.timeToFull / 60) + "m"
+                            text: UPower.onBattery ? Math.floor(UPower.displayDevice.timeToEmpty / 60) + "m" : Math.floor(UPower.displayDevice.timeToFull / 60) + "m (Charging)"
                             color: "lightgrey"
                             font.pixelSize: 10
                             horizontalAlignment: Text.AlignRight
@@ -340,9 +346,16 @@ Rectangle {
 
                     MouseArea {
                         anchors.fill: parent
-                        onClicked: {
-                            Services.Bluetooth.toggle()
-                            // print("Bluetooth toggled, current status: " + Services.Bluetooth.status);
+                        acceptedButtons: Qt.LeftButton | Qt.RightButton
+
+                        onClicked: (mouse) => {
+                            print(mouse.button);
+                            if (mouse.button === Qt.RightButton) {
+                                Services.ScreenManager.bt_active = true
+
+                            } else {
+                                Services.Bluetooth.toggle()
+                            }
                         }
                     }
                 }
