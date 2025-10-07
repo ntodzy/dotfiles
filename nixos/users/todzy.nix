@@ -4,7 +4,7 @@
   users.users.todzy = {
     isNormalUser = true;
     description = "Nathan Todzy";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input" ];
     packages = with pkgs; [ neovim firefox spotify gcc discord obsidian ];
 
     openssh.authorizedKeys.keys = [

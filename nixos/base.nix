@@ -81,6 +81,9 @@
     wl-clipboard
     tailscale
     fanctl
+    flameshot
+    grim
+    slurp
 
     # audio
     pipewire
@@ -90,6 +93,7 @@
     neovim
     vscode
     nautilus
+    gimp
   ];
 
   fonts.packages = [                                                                                         
