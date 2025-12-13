@@ -13,11 +13,9 @@
       ../../users/todzy.nix
     ];
 
-  networking = {
-    hostName = "todzy-ltp";
-    domain = "cs.wisc.edu";
-    nameservers = [ "dns.cs.wisc.edu" "dns4.cs.wisc.edu" ]; 
-  };
+  #
+  networking.hostName = "todzydesktop"; # Define your hostname
+  
 
   # Enable networking
   networking.networkmanager = {
@@ -53,6 +51,5 @@
     ];
     
   # Monitors Hyprland
-
   system.stateVersion = "24.11"; # Did you read the comment?
 }

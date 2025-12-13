@@ -10,6 +10,7 @@
 /.config/Electron
 /.config/Code
 /.config/dconf
+/.config/obsidian
 
 # 1Password
 /.config/vivaldi-snapshot
