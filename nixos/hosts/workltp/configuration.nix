@@ -46,11 +46,13 @@
     # require enabling PolKit integration on some desktop environments (e.g. Plasma).
     polkitPolicyOwners = [ "todzy" ];
   };
+
   environment.systemPackages = with pkgs; [
     # System Packages
     globalprotect-openconnect
     openconnect
     ];
+    
   # Monitors Hyprland
 
 
