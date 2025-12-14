@@ -13,20 +13,16 @@
       ../../users/todzy.nix
     ];
 
-  #
-  networking.hostName = "todzydesktop"; # Define your hostname
-  
 
   # Enable networking
+  networking.hostName = "todzydesktop"; # Define your hostname
   networking.networkmanager = {
     enable = true;
     plugins = with pkgs; [
       networkmanager-openconnect
-      networkmanager-openvpn
     ];	
   };
 
-  services.globalprotect.enable = true;
   programs.ssh.startAgent = true;
 
   users.users.todzy = {
@@ -46,10 +42,22 @@
 
   environment.systemPackages = with pkgs; [
     # System Packages
-    globalprotect-openconnect
     openconnect
-    ];
-    
+  ];
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;      # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
+  
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.open = true;  # see the note above
+  hardware.nvidia.powerManagement.enable = true;
+  
+  
   # Monitors Hyprland
   system.stateVersion = "24.11"; # Did you read the comment?
 }

@@ -36,7 +36,7 @@
         kitty # required for hyprland
         hyprpolkitagent
         inputs.quickshell.packages.${pkgs.system}.default # shell
-        rofi-wayland # program launcher
+        rofi # program launcher
         dunst # notifcation manager
         libnotify
         matugen

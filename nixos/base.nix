@@ -64,6 +64,11 @@
     };
   };
 
+  # VPN & Tailscale
+  services.tailscale = {
+    enable = true;
+  };
+
   # Power
   powerManagement.enable = true;
   services.upower.enable = true;
@@ -79,7 +84,6 @@
     brightnessctl
     playerctl
     wl-clipboard
-    tailscale
     fanctl
     flameshot
     grim

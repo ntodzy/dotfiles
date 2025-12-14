@@ -33,7 +33,7 @@ MouseArea {
     QsMenuAnchor {
         id: trayMenuAnchor
         menu: root.modelData.menu
-        anchor.window: parentWindow
+        anchor.window: menuqWindow
     }
 
     PanelWindow {
@@ -49,7 +49,7 @@ MouseArea {
         implicitHeight: 0
 
         PopupWindow {
-            id: parentWindow
+            id: menuWindow
             anchor.window: topLevel
 
             visible: true

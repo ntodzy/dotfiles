@@ -8,14 +8,14 @@ import Quickshell.Widgets
 import Quickshell.Io
 import Quickshell.Services.SystemTray
 
-import "root:/apps/bar/" as Bar
+import "root:/widgets/" as Widgets
+import "root:/windows/" as Windows
+import "root:/windows/Dashboard/" as Dashboard
 
 Scope {
     id: root
 
-    Bar.Bar {}
-
-    
-
+    Windows.Bar {}
+    Dashboard.Dashboard {}
 }
 
