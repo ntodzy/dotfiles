@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ../../base.nix
       ../../modules/de.nix
+      ../../modules/sunshine.nix
       ../../modules/sec-fingerprint.nix
 
       # Users
@@ -24,13 +25,6 @@
   };
 
   programs.ssh.startAgent = true;
-
-  users.users.todzy = {
-  isNormalUser = true;
-    description = "Nathan Todzy";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ neovim firefox spotify gcc discord obsidian ];
-  };
 
   programs._1password.enable = true;
   programs._1password-gui = {
@@ -56,7 +50,6 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = true;  # see the note above
   hardware.nvidia.powerManagement.enable = true;
-  
   
   # Monitors Hyprland
   system.stateVersion = "24.11"; # Did you read the comment?

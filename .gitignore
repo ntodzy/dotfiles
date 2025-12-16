@@ -11,6 +11,7 @@
 /.config/Code
 /.config/dconf
 /.config/obsidian
+/.config/sunshine
 
 # 1Password
 /.config/vivaldi-snapshot

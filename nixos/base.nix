@@ -98,6 +98,7 @@
     vscode
     nautilus
     gimp
+    bluetui
   ];
 
   fonts.packages = [                                                                                         
