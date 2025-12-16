@@ -3,6 +3,8 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import Quickshell
 
+import Quickshell.Services.UPower
+
 import "root:/services/" as Services
 
 Rectangle {
@@ -10,7 +12,7 @@ Rectangle {
     width: batteryinfo.implicitWidth + 10
     radius: 25
     color: Services.Colors.primary_container
-    visible: UPower.hasBattery
+    visible: UPower.displayDevice.isLaptopBattery
 
     RowLayout {
         id: batteryinfo

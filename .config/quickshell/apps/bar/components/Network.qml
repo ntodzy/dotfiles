@@ -9,6 +9,25 @@ import Quickshell.Bluetooth
 import "root:/services/" as Services
 
 WrapperRectangle {
+    function returnBluetoothName() {
+        // Count number of connected devices
+        var connectedDevices = 0;
+
+        for (var i = 0; i < Bluetooth.devices.values.length; i++) {
+            if (Bluetooth.devices.values[i].connected) {
+                connectedDevices += 1;
+            }
+        }
+
+        if (connectedDevices > 1) {
+            return connectedDevices + " Devices";
+        } else  if (connectedDevices > 0) {
+            return Bluetooth.devices.values[0].name.slice(0,20);
+        } else {
+            return "No Device";
+        }
+    }
+
     Layout.minimumHeight: root.height - root.margin
     radius: 25
     color: Services.Colors.primary_container
@@ -26,8 +45,9 @@ WrapperRectangle {
 
         Text {
             Layout.alignment: Qt.AlignVCenter
-            visible: Bluetooth.defaultAdapter.enabled
-            text:  Bluetooth.devices[0] ? "󰂯 " + Bluetooth.devices[0].name : "󰂯 "
+            visible: Bluetooth.devices.length > 0 && Bluetooth.devices.values.some(d => d.connected)
+            // text:  Bluetooth.devices.length > 0 ? "󰂯 " + Bluetooth.devices[0] : "󰂯 hi"
+            text: "󰂯 " + returnBluetoothName()
             color: Services.Colors.on_primary_container
             font.pixelSize: 12
         }

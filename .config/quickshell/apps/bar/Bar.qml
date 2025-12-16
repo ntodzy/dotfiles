@@ -75,42 +75,16 @@ Scope {
                 RowLayout {
                     anchors.horizontalCenter: parent.horizontalCenter
 
-                    Rectangle {
-                        width: 80
-                    }
-
-
-                    Rectangle {
-                        width: 70 
-                        Layout.minimumHeight: root.height - root.margin
-                        radius: 24
-                        color: Services.Colors.primary
-
-                        // Weather
-                        Text {
-                            anchors.centerIn: parent
-                            text: "   72°F"
-                        }
-                    }
-
-                    Rectangle {
-                        width: 140
-                        Layout.minimumHeight: root.height - root.margin
-                        radius: 24
-                        color: Services.Colors.primary
-
-                        // Layout Spacer
-                    }
-
-                    Rectangle {
-                        width: 10
-                    }
+                    Components.Weather { }
+                    Components.Player { }
+                    
                 }
 
                 RowLayout {
                     anchors.right: parent.right
-
+                    
                     Components.Network {}
+                    Components.Audio { }
                     Components.Clock {}
                     Components.Battery {}
                 }

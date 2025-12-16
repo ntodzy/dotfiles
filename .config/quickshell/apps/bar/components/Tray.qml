@@ -39,9 +39,13 @@ Rectangle {
 
                 Image {
                     id: icon
-                    anchors.fill: parent
+                    width: 16
+                    height: 16
+                    anchors.centerIn: parent
+
                     source: modelData.icon
                     fillMode: Image.PreserveAspectFit
+
                 }
                 
                 QsMenuAnchor {
@@ -70,7 +74,7 @@ Rectangle {
 
                         implicitWidth: modelData.visible ? modelData.minimumWidth : 1
                         anchor.rect {
-                            x: icon.mapToItem(null, 0, 0).x + (icon.width - width) / 2
+                            x: icon.mapToItem(null, 0, 0).x + (icon.width - width) / 2 - 24
                             y: 3 // acts as a margin
                         }   
                         
