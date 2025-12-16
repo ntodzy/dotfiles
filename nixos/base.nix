@@ -88,6 +88,7 @@
     flameshot
     grim
     slurp
+    kitty
 
     # audio
     pipewire
