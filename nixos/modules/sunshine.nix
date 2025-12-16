@@ -1,7 +1,11 @@
 { config, pkgs, inputs, ... }:
 
+let
+    sunshineCuda = pkgs.sunshine.override { cudaSupport = true; };
+in
 {
     services.sunshine = {
+        package = sunshineCuda;
         enable = true;
         autoStart = true;
         capSysAdmin = true;

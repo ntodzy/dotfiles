@@ -40,10 +40,41 @@
      neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
      git
+     nvidia-vaapi-driver
+     egl-wayland
   ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;      # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
+  
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    open = true;
+    modesetting.enable = true;
+    powerManagement.enable = false;
+  };
+
+
+  boot.blacklistedKernelModules = [ "ast" ];
+  boot.initrd.kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
+  boot.kernelParams = ["nvidia-drm.modeset=1" "nvidia_drm.fbdev=1"];
+  nixpkgs.config.nvidia.acceptLicense = true;
+
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=no
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

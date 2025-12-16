@@ -34,6 +34,7 @@
         hyprpaper
         xdg-desktop-portal-hyprland
         kitty # required for hyprland
+	warp-terminal
         hyprpolkitagent
         inputs.quickshell.packages.${pkgs.system}.default # shell
         rofi # program launcher
