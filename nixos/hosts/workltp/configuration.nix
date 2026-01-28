@@ -5,8 +5,10 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../base.nix
-      ../../modules/de.nix
-      ../../modules/sec-fingerprint.nix
+
+      # Niri and DMS
+      ../../modules/niri.nix
+      inputs.dms.nixosModules.dank-material-shell
 
       # Users
       # Don't forget to set a password with ‘passwd’.
@@ -15,8 +17,7 @@
 
   networking = {
     hostName = "todzy-ltp";
-    domain = "cs.wisc.edu";
-    nameservers = [ "dns.cs.wisc.edu" "dns4.cs.wisc.edu" ]; 
+    domain = "cs.wisc.edu"; 
   };
 
   # Enable networking
@@ -24,20 +25,33 @@
     enable = true;
     plugins = with pkgs; [
       networkmanager-openconnect
-      networkmanager-openvpn
-    ];	
+   ];	
   };
 
-  services.globalprotect.enable = true;
-  programs.ssh.startAgent = true;
+  #programs.ssh.startAgent = true;
 
-  
-  users.users.todzy = {
-  isNormalUser = true;
-    description = "Nathan Todzy";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ neovim firefox spotify gcc discord obsidian ];
+  programs.dank-material-shell = {
+    enable = true;
+    enableSystemMonitoring = true;
+    dgop.package = inputs.dgop.packages.${pkgs.system}.default;
   };
+
+  fonts.packages = with pkgs; [
+    material-design-icons
+    material-symbols
+    nerd-fonts.fira-code
+    inter
+  ];
+
+  programs.seahorse.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services = {
+    greetd.enableGnomeKeyring = true;
+    greetd-password.enableGnomeKeyring = true;
+    login.enableGnomeKeyring = true;
+  };
+
+  services.dbus.packages = [ pkgs.gnome-keyring pkgs.gcr ];
 
   programs._1password.enable = true;
   programs._1password-gui = {
@@ -47,15 +61,23 @@
     polkitPolicyOwners = [ "todzy" ];
   };
 
+  environment.etc."rclone-mnt.conf".text = ''
+    [stardust]
+    type = sftp
+    host = 100.72.253.9
+    user = todzy
+    key_file = ~/.ssh/id_ed25519
+  '';
+
   environment.systemPackages = with pkgs; [
     # System Packages
-    globalprotect-openconnect
     openconnect
-    ];
-    
-  # Monitors Hyprland
+    rclone
 
-
+    # dms
+    wl-clipboard
+    accountsservice
+  ];
   
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 }

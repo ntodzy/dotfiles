@@ -1,0 +1,8 @@
+{
+  "dankBatteryAlerts": {
+    "enabled": true
+  },
+  "tailscale": {
+    "enabled": true
+  }
+}

@@ -12,6 +12,7 @@
 /.config/dconf
 /.config/obsidian
 /.config/sunshine
+/.config/mozilla
 
 # 1Password
 /.config/vivaldi-snapshot

@@ -1,7 +1,5 @@
 { config, pkgs, inputs, ... }:
 
-
-
 {
   users.users.todzy = {
     isNormalUser = true;
@@ -9,15 +7,7 @@
     extraGroups = [ "networkmanager" "wheel" "input" "video" ];
     packages = with pkgs; [ 
       neovim
-      firefox
-      spotify
       gcc
-      discord 
-      obsidian
-      # Introduce the LaTeX config
-
-      zathura # pdf viewer with auto
-      texliveMedium
     ];
 
     openssh.authorizedKeys.keys = [

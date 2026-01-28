@@ -16,7 +16,7 @@
   # NETWORKING and SSH
   time.timeZone = "America/Chicago";
   networking.networkmanager.enable = true;
-  programs.ssh.startAgent = true;
+  #programs.ssh.startAgent = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -72,7 +72,13 @@
   # Power
   powerManagement.enable = true;
   services.upower.enable = true;
-  
+
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ 
+    pkgs.xdg-desktop-portal-gtk 
+    pkgs.xdg-desktop-portal-gnome
+  ];
+
   # Thunderbolt
   services.hardware.bolt.enable = true;
 
@@ -85,10 +91,11 @@
     playerctl
     wl-clipboard
     fanctl
-    flameshot
     grim
     slurp
     kitty
+    networkmanagerapplet
+    hyprpolkitagent
 
     # audio
     pipewire
@@ -100,7 +107,11 @@
     nautilus
     gimp
     bluetui
+    nodejs_24
   ];
+
+  # allow for easy patching of applications
+  programs.nix-ld.enable = true;
 
   fonts.packages = [                                                                                         
     pkgs.nerd-fonts.fira-code                                                       
