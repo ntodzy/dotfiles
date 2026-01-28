@@ -3,6 +3,7 @@
 
 # Secure files
 /github.pat
+/.config/rclone/rclone.conf
 
 # Applications
 /.config/spotify
