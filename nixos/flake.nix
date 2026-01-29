@@ -36,7 +36,7 @@
     nixosConfigurations.todzy-ltp = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
-      modules = [ ./hosts/workltp/configuration.nix ];
+      modules = [ ./hosts/todzy-ltp/configuration.nix ];
     };
 
     nixosConfigurations.todzyexp2 = nixpkgs.lib.nixosSystem {
@@ -49,6 +49,12 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [ ./hosts/venator/configuration.nix ];
+    };
+    
+    nixosConfigurations.todzy-work = {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [ ./hosts/workltp/configuration.nix ];
     };
   };
 }

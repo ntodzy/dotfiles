@@ -26,3 +26,27 @@
 /.config/BraveSoftware
 /.config/1Password
 ./pulse
+
+# Matugen / Dynamic Colors
+/.config/DankMaterialShell/*.css
+/.config/filezilla
+/.config/gtk-3.0/colors.css
+/.config/gtk-3.0/dank-colors.css
+.config/qt5ct/colors/matugen.conf
+.config/qt6ct/colors/matugen.conf
+.config/nvim/lua/plugins/dankcolors.lua
+.config/niri/dms/colors.kdl
+.gitignore
+.config/dgop/colors.json
+.config/dgop/colors.json
+.config/quickshell/Services/Colors.qml
+.config/qt6ct/colors/matugen.conf
+.config/qt5ct/colors/matugen.conf
+.config/nvim/lua/plugins/dankcolors.lua
+.config/nvim/lazy-lock.json
+.config/niri/dms/colors.kdl
+.config/hypr/colors.conf
+.config/gtk-4.0/dank-colors.css
+.config/gtk-4.0/colors.css
+.config/gtk-3.0/dank-colors.css
+.config/gtk-3.0/colors.css

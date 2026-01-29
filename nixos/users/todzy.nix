@@ -18,6 +18,7 @@
 
       zathura # pdf viewer with auto
       texliveMedium
+      filezilla
     ];
 
     openssh.authorizedKeys.keys = [

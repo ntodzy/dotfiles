@@ -3,7 +3,7 @@
   "currentThemeCategory": "dynamic",
   "customThemeFile": "",
   "registryThemeVariants": {},
-  "matugenScheme": "scheme-tonal-spot",
+  "matugenScheme": "scheme-content",
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "",
   "popupTransparency": 1,
@@ -358,6 +358,11 @@
   "showOnLastDisplay": {},
   "niriOutputSettings": {},
   "hyprlandOutputSettings": {},
+  "displayProfiles": {},
+  "activeDisplayProfile": {},
+  "displayProfileAutoSelect": false,
+  "displayShowDisconnected": false,
+  "displaySnapToEdge": true,
   "barConfigs": [
     {
       "id": "default",
@@ -376,11 +381,6 @@
         {
           "id": "workspaceSwitcher",
           "enabled": true
-        },
-        {
-          "id": "focusedWindow",
-          "enabled": true,
-          "focusedWindowCompactMode": true
         },
         {
           "id": "systemTray",
@@ -521,7 +521,11 @@
   "desktopWidgetGridSettings": {},
   "desktopWidgetInstances": [],
   "desktopWidgetGroups": [],
-  "builtInPluginSettings": {},
+  "builtInPluginSettings": {
+    "dms_settings_search": {
+      "trigger": "?"
+    }
+  },
   "launcherPluginVisibility": {},
   "launcherPluginOrder": [],
   "configVersion": 5
